@@ -1,65 +1,173 @@
-import Image from "next/image";
+import Link from "next/link";
+import { BlogCard } from "@/components/BlogCard";
+import { CTABand } from "@/components/CTABand";
+import { HeroSplit } from "@/components/HeroSplit";
+import { JsonLd } from "@/components/JsonLd";
+import { MandateBanner } from "@/components/MandateBanner";
+import { MinistryGrid } from "@/components/MinistryGrid";
+import { SermonCard } from "@/components/SermonCard";
+import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
+import { mandate, whoWeAre } from "@/content/about";
+import { ministries } from "@/content/ministries";
+import { expandEvents } from "@/lib/occurrences";
+import { siteConfig } from "@/lib/site-config";
+import { getBlogPosts, getEvents, getSermons } from "@/sanity/queries";
 
-export default function Home() {
+export const revalidate = 60;
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+const churchJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Church",
+  name: siteConfig.churchName,
+  alternateName: siteConfig.shortName,
+  url: siteUrl,
+  logo: `${siteUrl}/images/gcic-logo.png`,
+  image: `${siteUrl}/images/home-hero.jpg`,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${siteConfig.address.line1}, ${siteConfig.address.line2}`,
+    addressLocality: "Abuja",
+    addressCountry: "NG",
+  },
+  sameAs: Object.values(siteConfig.socials),
+};
+
+export default async function Home() {
+  const [sermons, blogPosts, events] = await Promise.all([getSermons(), getBlogPosts(), getEvents()]);
+
+  const from = new Date();
+  const to = new Date();
+  to.setDate(to.getDate() + 90);
+  const upcoming = expandEvents(events, from, to).slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <JsonLd data={churchJsonLd} />
+      <HeroSplit
+        eyebrow={siteConfig.churchName}
+        title={siteConfig.tagline}
+        subtitle="A multicultural church in Abuja, Nigeria, inaugurated 1 May 2016 with an assignment to preach the gospel and, with the help of the Holy Spirit, deliver, rescue and restore."
+        image="/images/home-hero.jpg"
+        imageAlt="GCIC congregation gathered for a Sunday service"
+        cta={[
+          { label: "Plan Your Visit", href: "/new-here" },
+          { label: "Watch Live", href: "/watch", variant: "secondary" },
+        ]}
+      />
+
+      <ServiceTimesStrip />
+
+      <MandateBanner items={mandate} />
+
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
+          <div>
+            <p className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-crimson-600">
+              Who We Are
+            </p>
+            <p className="mt-4 font-sans text-lg text-ink-600">{whoWeAre[0]}</p>
+            <Link
+              href="/about"
+              className="mt-6 inline-block font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Read Our Story &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-0 py-16">
+        <div className="mx-auto mb-10 max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-semibold text-ink-900">Ministries</h2>
+          <p className="mt-3 font-sans text-ink-600">
+            Every ministry at GCIC exists to help you grow in faith, strengthen your family, and
+            walk out discipleship in community.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <MinistryGrid ministries={ministries.slice(0, 4)} />
+        <div className="mt-8 text-center">
+          <Link href="/ministries" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
+            View All Ministries &rarr;
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {sermons.length > 0 && (
+        <section className="bg-sand-100 px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-10 max-w-6xl text-center">
+            <h2 className="font-display text-3xl font-semibold text-ink-900">Latest Sermons</h2>
+          </div>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-3">
+            {sermons.slice(0, 3).map((s) => (
+              <SermonCard key={s._id} sermon={s} />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/sermons" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
+              View All Sermons &rarr;
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {upcoming.length > 0 && (
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-center font-display text-3xl font-semibold text-ink-900">Upcoming Events</h2>
+            <div className="mt-8 space-y-3">
+              {upcoming.map((o, i) => (
+                <Link
+                  key={`${o.event._id}-${i}`}
+                  href={`/events/${o.event.slug}`}
+                  className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 transition-colors hover:border-crimson-600"
+                >
+                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center">
+                    <span className="font-sans text-xs font-semibold uppercase text-crimson-600">
+                      {o.start.toLocaleDateString("en-US", { month: "short" })}
+                    </span>
+                    <span className="font-display text-2xl font-semibold text-ink-900">{o.start.getDate()}</span>
+                  </div>
+                  <h3 className="font-display text-base font-semibold text-ink-900 group-hover:text-crimson-600">
+                    {o.event.title}
+                  </h3>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/events" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
+                View All Events &rarr;
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <CTABand
+        heading="Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+        cta={[{ label: "Give Now", href: "/give" }]}
+      />
+
+      {blogPosts.length > 0 && (
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-10 max-w-6xl text-center">
+            <h2 className="font-display text-3xl font-semibold text-ink-900">From the Blog</h2>
+          </div>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-3">
+            {blogPosts.slice(0, 3).map((p) => (
+              <BlogCard key={p._id} post={p} />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/blog" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
+              Read More Articles &rarr;
+            </Link>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
