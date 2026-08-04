@@ -20,10 +20,15 @@ export default function LeadershipPage() {
       <LeaderProfile
         name={leadership.name}
         photo="/images/leadership-hero.jpg"
+        secondaryPhoto="/images/leadership-secondary.jpg"
         scriptureRef={leadership.scriptureRef}
         scriptureText={leadership.scriptureText}
         heading={leadership.callingHeading}
         paragraphs={[leadership.intro, ...leadership.calling]}
+        factStrip={[
+          { value: "2016", label: "Senior Pastors Since" },
+          { value: "Multicultural", label: "Congregation" },
+        ]}
       />
       <CTABand heading="Connect with our pastoral team" cta={[{ label: "Contact Us", href: "/contact" }]} />
     </>

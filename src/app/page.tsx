@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BlogCard } from "@/components/BlogCard";
 import { CTABand } from "@/components/CTABand";
-import { HeroSplit } from "@/components/HeroSplit";
+import { HeroFullBleed } from "@/components/HeroFullBleed";
 import { JsonLd } from "@/components/JsonLd";
 import { MandateBanner } from "@/components/MandateBanner";
 import { MinistryGrid } from "@/components/MinistryGrid";
@@ -24,7 +24,7 @@ const churchJsonLd = {
   alternateName: siteConfig.shortName,
   url: siteUrl,
   logo: `${siteUrl}/images/gcic-logo.png`,
-  image: `${siteUrl}/images/home-hero.jpg`,
+  image: `${siteUrl}/images/congregation-hall.jpg`,
   telephone: siteConfig.phone,
   email: siteConfig.email,
   address: {
@@ -47,12 +47,12 @@ export default async function Home() {
   return (
     <>
       <JsonLd data={churchJsonLd} />
-      <HeroSplit
+      <HeroFullBleed
         eyebrow={siteConfig.churchName}
         title={siteConfig.tagline}
         subtitle="A multicultural church in Abuja, Nigeria, inaugurated 1 May 2016 with an assignment to preach the gospel and, with the help of the Holy Spirit, deliver, rescue and restore."
-        image="/images/home-hero.jpg"
-        imageAlt="GCIC congregation gathered for a Sunday service"
+        image="/images/congregation-hall.jpg"
+        imageAlt="GCIC congregation gathered for a service, filling the sanctuary"
         cta={[
           { label: "Plan Your Visit", href: "/new-here" },
           { label: "Watch Live", href: "/watch", variant: "secondary" },
@@ -123,13 +123,13 @@ export default async function Home() {
                 <Link
                   key={`${o.event._id}-${i}`}
                   href={`/events/${o.event.slug}`}
-                  className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 transition-colors hover:border-crimson-600"
+                  className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-md"
                 >
-                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center">
-                    <span className="font-sans text-xs font-semibold uppercase text-crimson-600">
+                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center ring-1 ring-crimson-600/10 transition-colors group-hover:bg-crimson-600 group-hover:ring-crimson-600">
+                    <span className="font-sans text-xs font-semibold uppercase text-crimson-600 group-hover:text-ivory">
                       {o.start.toLocaleDateString("en-US", { month: "short" })}
                     </span>
-                    <span className="font-display text-2xl font-semibold text-ink-900">{o.start.getDate()}</span>
+                    <span className="font-display text-2xl font-semibold text-ink-900 group-hover:text-ivory">{o.start.getDate()}</span>
                   </div>
                   <h3 className="font-display text-base font-semibold text-ink-900 group-hover:text-crimson-600">
                     {o.event.title}
@@ -149,6 +149,7 @@ export default async function Home() {
       <CTABand
         heading="Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
         cta={[{ label: "Give Now", href: "/give" }]}
+        size="large"
       />
 
       {blogPosts.length > 0 && (

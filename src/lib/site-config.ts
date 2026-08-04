@@ -29,6 +29,13 @@ export const serviceTimes = [
   { label: "Morning Dew", time: "Mon–Sat, 6:00am" },
 ] as const;
 
+/** Small real facts used in the homepage hero's stat strip — see HeroFullBleed. */
+export const quickFacts = [
+  { value: "2016", label: "Founded" },
+  { value: "3", label: "Sunday Services" },
+  { value: "24/7", label: "Prayer Line" },
+] as const;
+
 export type NavLink = { label: string; href: string };
 export type NavItem = NavLink & { children?: NavLink[] };
 

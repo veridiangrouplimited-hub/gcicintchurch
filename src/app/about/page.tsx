@@ -49,11 +49,14 @@ export default function AboutPage() {
             {ourVision.map((v, i) => {
               const Icon = visionIcons[i];
               return (
-                <div key={v.title} className="rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-crimson-50 text-crimson-600">
-                    <Icon className="h-5 w-5" />
+                <div
+                  key={v.title}
+                  className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-lg"
+                >
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
+                    <Icon className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-4 font-display text-base font-semibold text-ink-900">{v.title}</h3>
+                  <h3 className="mt-5 font-display text-lg font-semibold text-ink-900">{v.title}</h3>
                   <p className="mt-2 font-sans text-sm text-ink-600">{v.text}</p>
                 </div>
               );

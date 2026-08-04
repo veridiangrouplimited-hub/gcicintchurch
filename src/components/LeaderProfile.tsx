@@ -3,28 +3,52 @@ import Image from "next/image";
 export function LeaderProfile({
   name,
   photo,
+  secondaryPhoto,
   scriptureRef,
   scriptureText,
   paragraphs,
   heading,
+  factStrip,
 }: {
   name: string;
   photo?: string;
+  secondaryPhoto?: string;
   scriptureRef?: string;
   scriptureText?: string;
   heading?: string;
   paragraphs: string[];
+  factStrip?: { value: string; label: string }[];
 }) {
   return (
     <section className="px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[minmax(0,320px)_1fr]">
+      <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[minmax(0,340px)_1fr]">
         <div>
-          {photo && (
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200">
-              <Image src={photo} alt={name} fill className="object-cover" />
+          <div className="relative">
+            {photo && (
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200 shadow-sm">
+                <Image src={photo} alt={name} fill className="object-cover" />
+              </div>
+            )}
+            {secondaryPhoto && (
+              <div className="absolute -bottom-8 -right-6 hidden aspect-[4/3] w-2/3 overflow-hidden rounded-[var(--radius-media)] border-4 border-ivory shadow-lg sm:block">
+                <Image src={secondaryPhoto} alt="" fill className="object-cover" />
+              </div>
+            )}
+          </div>
+          <p className={`font-display text-lg font-semibold text-ink-900 ${secondaryPhoto ? "mt-14 sm:mt-14" : "mt-4"}`}>
+            {name}
+          </p>
+
+          {factStrip && factStrip.length > 0 && (
+            <div className="mt-6 flex gap-6 border-t border-sand-200 pt-6">
+              {factStrip.map((f) => (
+                <div key={f.label}>
+                  <p className="font-display text-xl font-semibold text-crimson-600">{f.value}</p>
+                  <p className="mt-1 font-sans text-xs uppercase tracking-wide text-ink-600">{f.label}</p>
+                </div>
+              ))}
             </div>
           )}
-          <p className="mt-4 font-display text-lg font-semibold text-ink-900">{name}</p>
         </div>
         <div>
           {scriptureText && (

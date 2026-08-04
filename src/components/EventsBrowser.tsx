@@ -66,13 +66,13 @@ export function EventsBrowser({ occurrences }: { occurrences: SerializedOccurren
                 <Link
                   key={`${o.slug}-${o.startISO}-${i}`}
                   href={`/events/${o.slug}`}
-                  className="group flex gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 transition-colors hover:border-crimson-600"
+                  className="group flex gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-md"
                 >
-                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center">
-                    <span className="font-sans text-xs font-semibold uppercase text-crimson-600">
+                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center ring-1 ring-crimson-600/10 transition-colors group-hover:bg-crimson-600 group-hover:ring-crimson-600">
+                    <span className="font-sans text-xs font-semibold uppercase text-crimson-600 group-hover:text-ivory">
                       {start.toLocaleDateString("en-US", { month: "short" })}
                     </span>
-                    <span className="font-display text-2xl font-semibold text-ink-900">{start.getDate()}</span>
+                    <span className="font-display text-2xl font-semibold text-ink-900 group-hover:text-ivory">{start.getDate()}</span>
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-display text-base font-semibold text-ink-900 group-hover:text-crimson-600">
