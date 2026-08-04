@@ -29,6 +29,8 @@ export default function GivePage() {
             <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">— {givingContent.scriptureRef}</cite>
           </blockquote>
         }
+        image="/images/pastors-seated.jpg"
+        imageAlt="GCIC pastors seated together"
       />
 
       <section className="px-4 pb-16 sm:px-6 lg:px-8">

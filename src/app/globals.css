@@ -44,3 +44,11 @@ h3,
 h4 {
   font-family: var(--font-display), Georgia, serif;
 }
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

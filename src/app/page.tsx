@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { BlogCard } from "@/components/BlogCard";
+import { Carousel } from "@/components/Carousel";
 import { CTABand } from "@/components/CTABand";
 import { HeroFullBleed } from "@/components/HeroFullBleed";
 import { JsonLd } from "@/components/JsonLd";
 import { MandateBanner } from "@/components/MandateBanner";
-import { MinistryGrid } from "@/components/MinistryGrid";
+import { MinistryCard } from "@/components/MinistryGrid";
 import { SermonCard } from "@/components/SermonCard";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
 import { mandate, whoWeAre } from "@/content/about";
@@ -88,7 +89,11 @@ export default async function Home() {
             walk out discipleship in community.
           </p>
         </div>
-        <MinistryGrid ministries={ministries.slice(0, 4)} />
+        <Carousel>
+          {ministries.map((m, i) => (
+            <MinistryCard key={m.slug} ministry={m} index={i} className="w-72 shrink-0 sm:w-80" />
+          ))}
+        </Carousel>
         <div className="mt-8 text-center">
           <Link href="/ministries" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
             View All Ministries &rarr;

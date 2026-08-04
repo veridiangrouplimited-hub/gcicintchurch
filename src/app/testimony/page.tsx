@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { TestimonyForm } from "@/components/TestimonyForm";
 import { testimonyContent } from "@/content/pages";
@@ -17,6 +18,7 @@ export default async function TestimonyPage() {
   return (
     <>
       <PageHeader title={testimonyContent.heading} crumbLabel="Share a Testimony" crumbHref="/testimony" />
+      <PageBanner image="/images/testimonies.jpg" alt="GCIC members sharing testimonies" />
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="space-y-4 font-sans text-ink-600">

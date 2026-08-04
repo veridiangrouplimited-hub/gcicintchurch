@@ -10,6 +10,7 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from "@/components/Icons";
+import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
 import { siteConfig } from "@/lib/site-config";
@@ -31,6 +32,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader title="Contact" crumbLabel="Contact" crumbHref="/contact" />
+      <PageBanner image="/images/pastor-mary-preaching.jpg" alt="A GCIC pastor ministering to the congregation" />
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2">

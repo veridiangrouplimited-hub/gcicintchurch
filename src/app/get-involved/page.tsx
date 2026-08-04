@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { VolunteerForm } from "@/components/VolunteerForm";
 import { getInvolved } from "@/content/pages";
@@ -12,6 +13,7 @@ export default function GetInvolvedPage() {
   return (
     <>
       <PageHeader title={getInvolved.heading} crumbLabel="Get Involved" crumbHref="/get-involved" />
+      <PageBanner image="/images/serving-team.jpg" alt="GCIC volunteers serving together" />
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <p className="font-sans text-sm font-semibold uppercase tracking-[0.2em] text-crimson-600">

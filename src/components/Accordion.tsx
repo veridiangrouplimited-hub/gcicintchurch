@@ -7,7 +7,7 @@ export function Accordion({
 }: {
   items: { question: string; answer: string }[];
 }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="divide-y divide-sand-200 border-y border-sand-200">

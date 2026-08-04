@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { PrayerForm } from "@/components/PrayerForm";
 import { prayerRequests } from "@/content/pages";
@@ -13,6 +14,7 @@ export default function PrayerPage() {
   return (
     <>
       <PageHeader title={prayerRequests.heading} crumbLabel="Prayer Requests" crumbHref="/prayer" />
+      <PageBanner image="/images/pastor-praying-blue.jpg" alt="A GCIC pastor in prayer" />
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <p className="font-sans text-ink-600">{prayerRequests.body}</p>

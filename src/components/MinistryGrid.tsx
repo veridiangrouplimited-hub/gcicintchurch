@@ -1,42 +1,72 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Ministry } from "@/content/ministries";
-import { BookOpenIcon, FlameIcon, GlobeIcon, HeartIcon, MapPinIcon, UsersIcon } from "@/components/Icons";
 
-const ministryIcons: Record<string, (props: { className?: string }) => React.ReactElement> = {
-  "children-and-youth": BookOpenIcon,
-  "mens-group": UsersIcon,
-  "women-of-impact": FlameIcon,
-  "marriage-and-family": HeartIcon,
-  outreach: GlobeIcon,
-  welfare: HeartIcon,
-  "heavenly-jerusalem-altar": MapPinIcon,
-  "training-department": BookOpenIcon,
+export const ministryImages: Record<string, string> = {
+  "children-and-youth": "/images/children-ministry.png",
+  "women-of-impact": "/images/women-ministry.png",
+  "mens-group": "/images/serving-team.jpg",
+  "marriage-and-family": "/images/couple-portrait.jpg",
+  outreach: "/images/worship-hands-raised.jpg",
+  welfare: "/images/quiet-prayer.jpg",
+  "heavenly-jerusalem-altar": "/images/pastor-kneeling-prayer.png",
+  "training-department": "/images/pastor-teaching.jpg",
 };
+
+export function MinistryCard({
+  ministry,
+  index,
+  className = "w-full",
+}: {
+  ministry: Ministry;
+  index?: number;
+  className?: string;
+}) {
+  const image = ministryImages[ministry.slug];
+
+  return (
+    <Link
+      href={`/ministries/${ministry.slug}`}
+      className={`group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[var(--radius-media)] border border-sand-200 bg-ink-900 ${className}`}
+    >
+      {image && (
+        <Image
+          src={image}
+          alt={ministry.name}
+          fill
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/50 to-ink-900/10 transition-colors duration-300 group-hover:from-ink-900/95" />
+
+      {typeof index === "number" && (
+        <span className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-ivory/10 font-display text-sm font-semibold text-ivory ring-1 ring-ivory/25 backdrop-blur-sm">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      )}
+
+      <div className="relative p-6">
+        <h3 className="font-display text-xl font-semibold text-ivory">{ministry.name}</h3>
+        <p className="mt-0 max-h-0 overflow-hidden font-sans text-sm text-ivory/85 opacity-0 transition-all duration-300 ease-out group-hover:mt-2 group-hover:max-h-28 group-hover:opacity-100">
+          {ministry.summary}
+        </p>
+        <span className="mt-3 inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-ivory">
+          Explore ministry
+          <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+            <path d="m9 5.5 6.5 6.5L9 18.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export function MinistryGrid({ ministries }: { ministries: Ministry[] }) {
   return (
     <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-      {ministries.map((m) => {
-        const Icon = ministryIcons[m.slug] ?? HeartIcon;
-        return (
-          <Link
-            key={m.slug}
-            href={`/ministries/${m.slug}`}
-            className="group flex flex-col rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-lg"
-          >
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
-              <Icon className="h-5 w-5" />
-            </span>
-            <h3 className="mt-4 font-display text-lg font-semibold text-ink-900 group-hover:text-crimson-600">
-              {m.name}
-            </h3>
-            <p className="mt-2 flex-1 font-sans text-sm text-ink-600">{m.summary}</p>
-            <span className="mt-4 font-sans text-sm font-semibold text-crimson-600">
-              Learn more &rarr;
-            </span>
-          </Link>
-        );
-      })}
+      {ministries.map((m, i) => (
+        <MinistryCard key={m.slug} ministry={m} index={i} />
+      ))}
     </div>
   );
 }

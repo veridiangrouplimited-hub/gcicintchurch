@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { membershipClass } from "@/content/pages";
 
@@ -11,6 +12,7 @@ export default function MembershipClassPage() {
   return (
     <>
       <PageHeader title={membershipClass.heading} crumbLabel="Membership Class" crumbHref="/about/membership-class" />
+      <PageBanner image="/images/pastor-teaching.jpg" alt="A GCIC pastor teaching the membership class" />
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="font-sans text-sm font-semibold uppercase tracking-[0.2em] text-crimson-600">

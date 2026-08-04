@@ -1,17 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ClockIcon,
+  BookOpenIcon,
+  CalendarIcon,
+  CameraIcon,
   FacebookIcon,
+  FlameIcon,
   InstagramIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
   SpotifyIcon,
   TwitterIcon,
+  VideoIcon,
   YoutubeIcon,
 } from "@/components/Icons";
-import { footerNav, serviceTimes, siteConfig } from "@/lib/site-config";
+import { footerNav, siteConfig } from "@/lib/site-config";
+
+const exploreIcons: Record<string, (props: { className?: string }) => React.ReactElement> = {
+  "/blog": BookOpenIcon,
+  "/sermons": VideoIcon,
+  "/devotionals": FlameIcon,
+  "/events": CalendarIcon,
+  "/gallery": CameraIcon,
+};
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -39,7 +51,27 @@ export function Footer() {
         <div className="mt-14 grid grid-cols-1 gap-10 border-t border-sand-200 pt-12 sm:grid-cols-2 md:grid-cols-4">
           <FooterColumn title="GCIC Ministries" links={footerNav.ministries} />
           <FooterColumn title="Programmes" links={footerNav.programmes} />
-          <FooterColumn title="Explore" links={footerNav.explore} />
+
+          <div>
+            <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-ink-900">Explore</h3>
+            <div className="mt-4 grid grid-cols-2 gap-2.5">
+              {footerNav.explore.map((link) => {
+                const Icon = exploreIcons[link.href] ?? BookOpenIcon;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="group flex flex-col items-start gap-2 rounded-[var(--radius-control)] border border-sand-200 bg-ivory p-3 transition-colors hover:border-crimson-600/40"
+                  >
+                    <Icon className="h-4 w-4 text-crimson-600" />
+                    <span className="font-sans text-xs font-medium leading-tight text-ink-900 group-hover:text-crimson-600">
+                      {link.label}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
 
           <div>
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-ink-900">Contact Info</h3>
@@ -60,17 +92,6 @@ export function Footer() {
                   {siteConfig.address.line1}, {siteConfig.address.line2}
                 </span>
               </li>
-            </ul>
-            <h3 className="mt-6 font-sans text-sm font-semibold uppercase tracking-wide text-ink-900">Service Times</h3>
-            <ul className="mt-3 space-y-2 font-sans text-sm text-ink-600">
-              {serviceTimes.map((s) => (
-                <li key={s.label} className="flex items-start gap-2">
-                  <ClockIcon className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
-                  <span>
-                    <span className="text-ink-900">{s.label}:</span> {s.time}
-                  </span>
-                </li>
-              ))}
             </ul>
           </div>
         </div>

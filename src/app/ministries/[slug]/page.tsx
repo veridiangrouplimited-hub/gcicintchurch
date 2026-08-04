@@ -2,14 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CTABand } from "@/components/CTABand";
+import { ministryImages } from "@/components/MinistryGrid";
 import { PageHeader } from "@/components/PageHeader";
 import { SchoolsGrid } from "@/components/SchoolsGrid";
 import { getMinistry, ministries, schools } from "@/content/ministries";
-
-const ministryImages: Record<string, string> = {
-  "children-and-youth": "/images/children-ministry.png",
-  "women-of-impact": "/images/women-ministry.png",
-};
 
 export function generateStaticParams() {
   return ministries.map((m) => ({ slug: m.slug }));

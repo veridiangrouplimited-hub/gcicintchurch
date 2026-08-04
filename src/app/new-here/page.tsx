@@ -33,7 +33,7 @@ export default function NewHerePage() {
         eyebrow="New Here?"
         title="We'd love to meet you."
         subtitle="Whether you're exploring faith for the first time or looking for a new church home, you're welcome at God's City International Church exactly as you are."
-        image="/images/home-hero.jpg"
+        image="/images/sanctuary-welcome.jpg"
         imageAlt="Congregation gathered for worship at GCIC"
         cta={[
           { label: "Watch Online First", href: "/watch", variant: "secondary" },

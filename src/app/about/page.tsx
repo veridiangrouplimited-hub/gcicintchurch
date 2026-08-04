@@ -6,6 +6,7 @@ import { CTABand } from "@/components/CTABand";
 import { BookOpenIcon, FlameIcon, GlobeIcon, HeartIcon, MapPinIcon } from "@/components/Icons";
 import { MandateBanner } from "@/components/MandateBanner";
 import { PageHeader } from "@/components/PageHeader";
+import { Tabs } from "@/components/Tabs";
 import { mandate, ourVision, whatWeBelieve, whoWeAre } from "@/content/about";
 import { leadership } from "@/content/leadership";
 
@@ -39,43 +40,54 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-sand-100 px-4 py-16 sm:px-6 lg:px-8">
+      <section id="what-we-believe" className="bg-sand-100 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <h2 className="font-display text-2xl font-semibold text-ink-900">Our Vision</h2>
-          <p className="mt-2 font-sans text-sm uppercase tracking-wide text-ink-600">
-            Founded on biblical principles, our vision is to and are committed to:
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {ourVision.map((v, i) => {
-              const Icon = visionIcons[i];
-              return (
-                <div
-                  key={v.title}
-                  className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-lg"
-                >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 font-display text-lg font-semibold text-ink-900">{v.title}</h3>
-                  <p className="mt-2 font-sans text-sm text-ink-600">{v.text}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section id="what-we-believe" className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl font-semibold text-ink-900">What We Believe</h2>
-          <div className="mt-6">
-            <Accordion
-              items={whatWeBelieve.map((text, i) => ({
-                question: `${i + 1}. ${text.split(".")[0]}.`,
-                answer: text,
-              }))}
-            />
-          </div>
+          <Tabs
+            items={[
+              {
+                id: "vision",
+                label: "Our Vision",
+                content: (
+                  <>
+                    <p className="mb-8 text-center font-sans text-sm uppercase tracking-wide text-ink-600">
+                      Founded on biblical principles, our vision is to and are committed to:
+                    </p>
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                      {ourVision.map((v, i) => {
+                        const Icon = visionIcons[i];
+                        return (
+                          <div
+                            key={v.title}
+                            className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-lg"
+                          >
+                            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
+                              <Icon className="h-6 w-6" />
+                            </span>
+                            <h3 className="mt-5 font-display text-lg font-semibold text-ink-900">{v.title}</h3>
+                            <p className="mt-2 font-sans text-sm text-ink-600">{v.text}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                ),
+              },
+              {
+                id: "what-we-believe",
+                label: "What We Believe",
+                content: (
+                  <div className="mx-auto max-w-3xl">
+                    <Accordion
+                      items={whatWeBelieve.map((text, i) => ({
+                        question: `${i + 1}. ${text.split(".")[0]}.`,
+                        answer: text,
+                      }))}
+                    />
+                  </div>
+                ),
+              },
+            ]}
+          />
         </div>
       </section>
 

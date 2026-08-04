@@ -22,6 +22,8 @@ export default function NightVigilPage() {
             </cite>
           </blockquote>
         }
+        image="/images/pastor-purple-stage.jpg"
+        imageAlt="Evening worship under stage lighting at GCIC's Friday night vigil"
       />
 
       <section className="px-4 pb-16 sm:px-6 lg:px-8">

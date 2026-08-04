@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { siteConfig } from "@/lib/site-config";
 
@@ -13,6 +14,7 @@ export default function RadioPage() {
   return (
     <>
       <PageHeader title="Power Touch Radio" crumbLabel="Power Touch Radio" crumbHref="/radio" />
+      <PageBanner image="/images/pastor-mic-blue.jpg" alt="A GCIC pastor speaking into a microphone" />
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
