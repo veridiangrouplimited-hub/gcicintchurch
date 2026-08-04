@@ -1,28 +1,28 @@
+import {
+  BookOpen,
+  Calendar,
+  Camera,
+  EnvelopeSimple,
+  FacebookLogo,
+  Fire,
+  InstagramLogo,
+  MapPin,
+  Phone,
+  SpotifyLogo,
+  VideoCamera,
+  XLogo,
+  YoutubeLogo,
+} from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BookOpenIcon,
-  CalendarIcon,
-  CameraIcon,
-  FacebookIcon,
-  FlameIcon,
-  InstagramIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-  SpotifyIcon,
-  TwitterIcon,
-  VideoIcon,
-  YoutubeIcon,
-} from "@/components/Icons";
 import { footerNav, siteConfig } from "@/lib/site-config";
 
-const exploreIcons: Record<string, (props: { className?: string }) => React.ReactElement> = {
-  "/blog": BookOpenIcon,
-  "/sermons": VideoIcon,
-  "/devotionals": FlameIcon,
-  "/events": CalendarIcon,
-  "/gallery": CameraIcon,
+const exploreIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "/blog": BookOpen,
+  "/sermons": VideoCamera,
+  "/devotionals": Fire,
+  "/events": Calendar,
+  "/gallery": Camera,
 };
 
 export function Footer() {
@@ -39,11 +39,11 @@ export function Footer() {
             &ldquo;You will seek me and find me when you seek me with all your heart.&rdquo;
           </p>
           <div className="mt-5 flex gap-3">
-            <SocialLink href={siteConfig.socials.facebook} label="Facebook" icon={FacebookIcon} />
-            <SocialLink href={siteConfig.socials.instagram} label="Instagram" icon={InstagramIcon} />
-            <SocialLink href={siteConfig.socials.twitter} label="Twitter" icon={TwitterIcon} />
-            <SocialLink href={siteConfig.socials.youtube} label="YouTube" icon={YoutubeIcon} />
-            <SocialLink href={siteConfig.socials.spotify} label="Spotify" icon={SpotifyIcon} />
+            <SocialLink href={siteConfig.socials.facebook} label="Facebook" icon={FacebookLogo} />
+            <SocialLink href={siteConfig.socials.instagram} label="Instagram" icon={InstagramLogo} />
+            <SocialLink href={siteConfig.socials.twitter} label="Twitter" icon={XLogo} />
+            <SocialLink href={siteConfig.socials.youtube} label="YouTube" icon={YoutubeLogo} />
+            <SocialLink href={siteConfig.socials.spotify} label="Spotify" icon={SpotifyLogo} />
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export function Footer() {
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-ink-900">Explore</h3>
             <div className="mt-4 grid grid-cols-2 gap-2.5">
               {footerNav.explore.map((link) => {
-                const Icon = exploreIcons[link.href] ?? BookOpenIcon;
+                const Icon = exploreIcons[link.href] ?? BookOpen;
                 return (
                   <Link
                     key={link.href}
@@ -77,20 +77,27 @@ export function Footer() {
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-ink-900">Contact Info</h3>
             <ul className="mt-4 space-y-3 font-sans text-sm text-ink-600">
               <li className="flex items-start gap-2">
-                <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
                 <span>{siteConfig.phone}</span>
               </li>
               <li className="flex items-start gap-2">
-                <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
+                <EnvelopeSimple className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
                 <a href={`mailto:${siteConfig.email}`} className="hover:text-crimson-600">
                   {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
-                <span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-crimson-600" />
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `${siteConfig.address.line1}, ${siteConfig.address.line2}`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="hover:text-crimson-600"
+                >
                   {siteConfig.address.line1}, {siteConfig.address.line2}
-                </span>
+                </a>
               </li>
             </ul>
           </div>
@@ -141,7 +148,7 @@ function SocialLink({
 }: {
   href: string;
   label: string;
-  icon: (props: { className?: string }) => React.ReactElement;
+  icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
     <a

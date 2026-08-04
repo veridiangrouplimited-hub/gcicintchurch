@@ -1,14 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BlogCard } from "@/components/BlogCard";
 import { Carousel } from "@/components/Carousel";
 import { CTABand } from "@/components/CTABand";
 import { HeroFullBleed } from "@/components/HeroFullBleed";
 import { JsonLd } from "@/components/JsonLd";
-import { MandateBanner } from "@/components/MandateBanner";
 import { MinistryCard } from "@/components/MinistryGrid";
+import { Reveal } from "@/components/Reveal";
 import { SermonCard } from "@/components/SermonCard";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
-import { mandate, whoWeAre } from "@/content/about";
+import { whoWeAre } from "@/content/about";
 import { ministries } from "@/content/ministries";
 import { expandEvents } from "@/lib/occurrences";
 import { siteConfig } from "@/lib/site-config";
@@ -51,7 +52,7 @@ export default async function Home() {
       <HeroFullBleed
         eyebrow={siteConfig.churchName}
         title={siteConfig.tagline}
-        subtitle="A multicultural church in Abuja, Nigeria, inaugurated 1 May 2016 with an assignment to preach the gospel and, with the help of the Holy Spirit, deliver, rescue and restore."
+        subtitle="A multicultural church in Abuja, Nigeria, on assignment to preach the gospel and deliver, rescue, and restore."
         image="/images/congregation-hall.jpg"
         imageAlt="GCIC congregation gathered for a service, filling the sanctuary"
         cta={[
@@ -62,10 +63,8 @@ export default async function Home() {
 
       <ServiceTimesStrip />
 
-      <MandateBanner items={mandate} />
-
       <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
+        <Reveal className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
           <div>
             <p className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-crimson-600">
               Who We Are
@@ -78,17 +77,20 @@ export default async function Home() {
               Read Our Story &rarr;
             </Link>
           </div>
-        </div>
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200">
+            <Image src="/images/sanctuary-welcome.jpg" alt="Members welcoming one another at GCIC" fill className="object-cover" />
+          </div>
+        </Reveal>
       </section>
 
       <section className="px-0 py-16">
-        <div className="mx-auto mb-10 max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+        <Reveal className="mx-auto mb-10 max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl font-semibold text-ink-900">Ministries</h2>
           <p className="mt-3 font-sans text-ink-600">
             Every ministry at GCIC exists to help you grow in faith, strengthen your family, and
             walk out discipleship in community.
           </p>
-        </div>
+        </Reveal>
         <Carousel>
           {ministries.map((m, i) => (
             <MinistryCard key={m.slug} ministry={m} index={i} className="w-72 shrink-0 sm:w-80" />
@@ -103,32 +105,41 @@ export default async function Home() {
 
       {sermons.length > 0 && (
         <section className="bg-sand-100 px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-10 max-w-6xl text-center">
-            <h2 className="font-display text-3xl font-semibold text-ink-900">Latest Sermons</h2>
-          </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-3">
-            {sermons.slice(0, 3).map((s) => (
-              <SermonCard key={s._id} sermon={s} />
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link href="/sermons" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
-              View All Sermons &rarr;
-            </Link>
-          </div>
+          <Reveal>
+            <div className="mx-auto mb-10 max-w-6xl text-center">
+              <h2 className="font-display text-3xl font-semibold text-ink-900">Latest Sermons</h2>
+            </div>
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-5">
+              <div className="lg:col-span-3">
+                <SermonCard sermon={sermons[0]} />
+              </div>
+              {sermons.length > 1 && (
+                <div className="flex flex-col justify-center gap-1 lg:col-span-2">
+                  {sermons.slice(1, 3).map((s) => (
+                    <SermonCard key={s._id} sermon={s} variant="compact" />
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/sermons" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
+                View All Sermons &rarr;
+              </Link>
+            </div>
+          </Reveal>
         </section>
       )}
 
       {upcoming.length > 0 && (
         <section className="px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <h2 className="text-center font-display text-3xl font-semibold text-ink-900">Upcoming Events</h2>
             <div className="mt-8 space-y-3">
               {upcoming.map((o, i) => (
                 <Link
                   key={`${o.event._id}-${i}`}
                   href={`/events/${o.event.slug}`}
-                  className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-md"
+                  className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-warm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-warm-lg"
                 >
                   <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center ring-1 ring-crimson-600/10 transition-colors group-hover:bg-crimson-600 group-hover:ring-crimson-600">
                     <span className="font-sans text-xs font-semibold uppercase text-crimson-600 group-hover:text-ivory">
@@ -147,31 +158,35 @@ export default async function Home() {
                 View All Events &rarr;
               </Link>
             </div>
-          </div>
+          </Reveal>
         </section>
       )}
 
-      <CTABand
-        heading="Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
-        cta={[{ label: "Give Now", href: "/give" }]}
-        size="large"
-      />
+      <Reveal>
+        <CTABand
+          heading="Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+          cta={[{ label: "Give Now", href: "/give" }]}
+          size="large"
+        />
+      </Reveal>
 
       {blogPosts.length > 0 && (
         <section className="px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-10 max-w-6xl text-center">
-            <h2 className="font-display text-3xl font-semibold text-ink-900">From the Blog</h2>
-          </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-3">
-            {blogPosts.slice(0, 3).map((p) => (
-              <BlogCard key={p._id} post={p} />
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link href="/blog" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
-              Read More Articles &rarr;
-            </Link>
-          </div>
+          <Reveal>
+            <div className="mx-auto mb-10 max-w-6xl text-center">
+              <h2 className="font-display text-3xl font-semibold text-ink-900">From the Blog</h2>
+            </div>
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-3">
+              {blogPosts.slice(0, 3).map((p) => (
+                <BlogCard key={p._id} post={p} />
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/blog" className="font-sans text-sm font-semibold text-crimson-600 hover:text-crimson-700">
+                Read More Articles &rarr;
+              </Link>
+            </div>
+          </Reveal>
         </section>
       )}
     </>

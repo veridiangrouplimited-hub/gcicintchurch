@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           url: `${siteUrl}/blog/${post.slug}`,
         }}
       />
-      <PageHeader title={post.title} crumbLabel="Blog" crumbHref="/blog" />
+      <PageHeader title={post.title} crumbLabel="Blog" crumbHref="/blog" eyebrow="Media" />
       <article className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <p className="font-sans text-sm text-ink-600">

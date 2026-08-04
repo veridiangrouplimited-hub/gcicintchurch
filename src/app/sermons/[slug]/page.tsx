@@ -58,7 +58,7 @@ export default async function SermonDetailPage({ params }: { params: Promise<{ s
           }}
         />
       )}
-      <PageHeader title={sermon.title} crumbLabel="Sermons" crumbHref="/sermons" />
+      <PageHeader title={sermon.title} crumbLabel="Sermons" crumbHref="/sermons" eyebrow="Media" />
 
       <section className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
@@ -87,16 +87,13 @@ export default async function SermonDetailPage({ params }: { params: Promise<{ s
               {new Date(sermon.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
             </span>
             {sermon.series && (
-              <>
-                <span aria-hidden="true">·</span>
-                <span className="rounded-full bg-sand-100 px-3 py-1 text-xs font-semibold text-ink-900">{sermon.series}</span>
-              </>
+              <span className="rounded-full bg-sand-100 px-3 py-1 text-xs font-semibold text-ink-900">{sermon.series}</span>
             )}
           </div>
 
           {sermon.scriptureRefs && sermon.scriptureRefs.length > 0 && (
             <p className="mt-3 font-sans text-sm font-semibold text-crimson-600">
-              {sermon.scriptureRefs.join(" · ")}
+              {sermon.scriptureRefs.join(", ")}
             </p>
           )}
 

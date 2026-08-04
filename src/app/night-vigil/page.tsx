@@ -18,7 +18,7 @@ export default function NightVigilPage() {
           <blockquote className="border-l-2 border-gold-500 pl-4 font-display text-lg italic text-ink-900">
             &ldquo;{nightVigil.scriptureText}&rdquo;
             <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">
-              — {nightVigil.scriptureRef}
+              {nightVigil.scriptureRef}
             </cite>
           </blockquote>
         }

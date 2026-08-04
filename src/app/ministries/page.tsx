@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MinistryGrid } from "@/components/MinistryGrid";
 import { PageHeader } from "@/components/PageHeader";
+import { Reveal } from "@/components/Reveal";
 import { ministries } from "@/content/ministries";
 
 export const metadata: Metadata = {
@@ -12,15 +13,16 @@ export const metadata: Metadata = {
 export default function MinistriesIndexPage() {
   return (
     <>
-      <PageHeader title="Ministries" crumbLabel="Ministries" crumbHref="/ministries" />
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <p className="mx-auto max-w-3xl text-center font-sans text-lg text-ink-600">
-          Every ministry at GCIC exists to help you grow in faith, strengthen your family, and
-          walk out discipleship in community.
-        </p>
-      </section>
-      <section className="pb-16">
-        <MinistryGrid ministries={ministries} />
+      <PageHeader
+        title="Ministries"
+        crumbLabel="Ministries"
+        crumbHref="/ministries"
+        subtitle="Every ministry at GCIC exists to help you grow in faith, strengthen your family, and walk out discipleship in community."
+      />
+      <section className="pb-16 pt-16">
+        <Reveal>
+          <MinistryGrid ministries={ministries} />
+        </Reveal>
       </section>
     </>
   );

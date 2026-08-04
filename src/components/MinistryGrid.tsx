@@ -1,3 +1,4 @@
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import type { Ministry } from "@/content/ministries";
@@ -27,7 +28,7 @@ export function MinistryCard({
   return (
     <Link
       href={`/ministries/${ministry.slug}`}
-      className={`group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[var(--radius-media)] border border-sand-200 bg-ink-900 ${className}`}
+      className={`group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[var(--radius-media)] border border-sand-200 bg-ink-900 shadow-warm transition-shadow duration-300 hover:shadow-warm-lg ${className}`}
     >
       {image && (
         <Image
@@ -52,9 +53,7 @@ export function MinistryCard({
         </p>
         <span className="mt-3 inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-ivory">
           Explore ministry
-          <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-            <path d="m9 5.5 6.5 6.5L9 18.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <ArrowRight size={14} weight="bold" className="transition-transform duration-200 group-hover:translate-x-1" />
         </span>
       </div>
     </Link>

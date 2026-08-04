@@ -35,7 +35,7 @@ export function BankDetailsPanel() {
     <div className="space-y-8">
       <div>
         <h3 className="font-display text-lg font-semibold text-ink-900">Naira Account</h3>
-        <div className="mt-2 rounded-[var(--radius-media)] border border-sand-200 bg-ivory px-6">
+        <div className="mt-2 rounded-[var(--radius-media)] border border-sand-200 bg-ivory px-6 shadow-warm">
           <Field label="Account Name" value={ngn.accountName} />
           <Field label="Bank" value={ngn.bank} />
           <Field label="Account Number" value={ngn.accountNumber} />
@@ -43,7 +43,7 @@ export function BankDetailsPanel() {
       </div>
       <div>
         <h3 className="font-display text-lg font-semibold text-ink-900">Forex Account</h3>
-        <div className="mt-2 rounded-[var(--radius-media)] border border-sand-200 bg-ivory px-6">
+        <div className="mt-2 rounded-[var(--radius-media)] border border-sand-200 bg-ivory px-6 shadow-warm">
           <Field label="Account Name" value={forex.accountName} />
           <Field label="Bank" value={forex.bank} />
           <Field label="Account Number" value={forex.accountNumber} />

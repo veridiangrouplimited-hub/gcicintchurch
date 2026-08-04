@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Lora, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "God's City International Church | Deliverance · Rescue · Restoration",
+    default: "God's City International Church | Deliverance, Rescue, Restoration",
     template: "%s | God's City International Church",
   },
   description:
@@ -32,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${lora.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ivory text-ink-900">
         <Header />

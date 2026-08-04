@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { quickFacts } from "@/lib/site-config";
 
 export function HeroFullBleed({
   eyebrow,
@@ -21,14 +20,14 @@ export function HeroFullBleed({
   live?: boolean;
 }) {
   return (
-    <section className="relative flex min-h-[75vh] items-end overflow-hidden sm:min-h-[85vh]">
+    <section className="relative flex min-h-[75dvh] items-end overflow-hidden sm:min-h-[85dvh]">
       <Image src={image} alt={imageAlt} fill priority className="object-cover" />
       <div
         className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/55 to-ink-900/10"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pb-12 pt-24 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:pb-16">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-14 pt-24 sm:px-6 lg:px-8 lg:pb-20">
         <div className="max-w-2xl">
           {eyebrow && (
             <p className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
@@ -64,15 +63,6 @@ export function HeroFullBleed({
               ))}
             </div>
           )}
-        </div>
-
-        <div className="flex shrink-0 gap-8 border-t border-ivory/20 pt-6 lg:gap-10 lg:border-t-0 lg:border-l lg:pl-10 lg:pt-0">
-          {quickFacts.map((f) => (
-            <div key={f.label}>
-              <p className="font-display text-2xl font-semibold text-ivory sm:text-3xl">{f.value}</p>
-              <p className="mt-1 font-sans text-xs uppercase tracking-wide text-ivory/70">{f.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ export function DevotionalCard({ devotional }: { devotional: Devotional }) {
   return (
     <Link
       href={`/devotionals/${devotional.slug}`}
-      className="group block rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-6 transition-colors hover:border-crimson-600"
+      className="group block rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-6 shadow-warm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-warm-lg"
     >
       <p className="font-sans text-xs font-semibold uppercase tracking-wide text-crimson-600">
         {new Date(devotional.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}

@@ -33,25 +33,27 @@ export function EventsBrowser({ occurrences }: { occurrences: SerializedOccurren
 
   return (
     <div>
-      <div className="mx-auto mb-8 flex max-w-5xl justify-center gap-2 px-4 sm:px-6 lg:px-8">
-        <button
-          type="button"
-          onClick={() => setView("list")}
-          className={`rounded-[var(--radius-control)] px-4 py-2 font-sans text-sm font-semibold ${
-            view === "list" ? "bg-crimson-600 text-ivory" : "border border-sand-200 text-ink-900"
-          }`}
-        >
-          List
-        </button>
-        <button
-          type="button"
-          onClick={() => setView("month")}
-          className={`rounded-[var(--radius-control)] px-4 py-2 font-sans text-sm font-semibold ${
-            view === "month" ? "bg-crimson-600 text-ivory" : "border border-sand-200 text-ink-900"
-          }`}
-        >
-          Month Calendar
-        </button>
+      <div className="mx-auto mb-8 flex max-w-5xl justify-center px-4 sm:px-6 lg:px-8">
+        <div className="inline-flex gap-1 rounded-full bg-sand-100 p-1">
+          <button
+            type="button"
+            onClick={() => setView("list")}
+            className={`rounded-full px-4 py-2 font-sans text-sm font-semibold transition-colors duration-200 ${
+              view === "list" ? "bg-crimson-600 text-ivory shadow-warm" : "text-ink-900 hover:text-crimson-600"
+            }`}
+          >
+            List
+          </button>
+          <button
+            type="button"
+            onClick={() => setView("month")}
+            className={`rounded-full px-4 py-2 font-sans text-sm font-semibold transition-colors duration-200 ${
+              view === "month" ? "bg-crimson-600 text-ivory shadow-warm" : "text-ink-900 hover:text-crimson-600"
+            }`}
+          >
+            Month Calendar
+          </button>
+        </div>
       </div>
 
       {view === "list" ? (
@@ -66,7 +68,7 @@ export function EventsBrowser({ occurrences }: { occurrences: SerializedOccurren
                 <Link
                   key={`${o.slug}-${o.startISO}-${i}`}
                   href={`/events/${o.slug}`}
-                  className="group flex gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-md"
+                  className="group flex gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-warm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-warm-lg"
                 >
                   <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center ring-1 ring-crimson-600/10 transition-colors group-hover:bg-crimson-600 group-hover:ring-crimson-600">
                     <span className="font-sans text-xs font-semibold uppercase text-crimson-600 group-hover:text-ivory">
@@ -80,7 +82,7 @@ export function EventsBrowser({ occurrences }: { occurrences: SerializedOccurren
                     </h3>
                     <p className="mt-1 font-sans text-sm text-ink-600">
                       {start.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
-                      {end && ` – ${end.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}`}
+                      {end && ` to ${end.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}`}
                       {o.location && <span> · {o.location}</span>}
                     </p>
                   </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
@@ -87,9 +88,7 @@ export function Carousel({ children, className = "" }: { children: ReactNode[]; 
           disabled={!canPrev}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 text-ink-900 transition-colors hover:border-crimson-600 hover:text-crimson-600 disabled:pointer-events-none disabled:opacity-30"
         >
-          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
-            <path d="M15 5.5 8.5 12l6.5 6.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <CaretLeft size={16} weight="bold" />
         </button>
 
         <div className="flex gap-2">
@@ -114,9 +113,7 @@ export function Carousel({ children, className = "" }: { children: ReactNode[]; 
           disabled={!canNext}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 text-ink-900 transition-colors hover:border-crimson-600 hover:text-crimson-600 disabled:pointer-events-none disabled:opacity-30"
         >
-          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
-            <path d="m9 5.5 6.5 6.5L9 18.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <CaretRight size={16} weight="bold" />
         </button>
       </div>
     </div>

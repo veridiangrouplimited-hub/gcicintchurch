@@ -25,12 +25,12 @@ export function LeaderProfile({
         <div>
           <div className="relative">
             {photo && (
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200 shadow-sm">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200 shadow-warm">
                 <Image src={photo} alt={name} fill className="object-cover" />
               </div>
             )}
             {secondaryPhoto && (
-              <div className="absolute -bottom-8 -right-6 hidden aspect-[4/3] w-2/3 overflow-hidden rounded-[var(--radius-media)] border-4 border-ivory shadow-lg sm:block">
+              <div className="absolute -bottom-8 -right-6 hidden aspect-[4/3] w-2/3 overflow-hidden rounded-[var(--radius-media)] border-4 border-ivory shadow-warm-lg sm:block">
                 <Image src={secondaryPhoto} alt="" fill className="object-cover" />
               </div>
             )}
@@ -54,7 +54,7 @@ export function LeaderProfile({
           {scriptureText && (
             <blockquote className="border-l-2 border-gold-500 pl-4 font-display text-xl italic text-ink-900">
               &ldquo;{scriptureText}&rdquo;
-              {scriptureRef && <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">— {scriptureRef}</cite>}
+              {scriptureRef && <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">{scriptureRef}</cite>}
             </blockquote>
           )}
           {heading && <h2 className="mt-8 font-display text-2xl font-semibold text-ink-900">{heading}</h2>}

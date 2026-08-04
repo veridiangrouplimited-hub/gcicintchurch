@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { BookOpen, Heart, MapPin, Users } from "@phosphor-icons/react/dist/ssr";
 import { Accordion } from "@/components/Accordion";
 import { HeroSplit } from "@/components/HeroSplit";
-import { BookOpenIcon, HeartIcon, MapPinIcon, UsersIcon } from "@/components/Icons";
 import { PlanVisitForm } from "@/components/PlanVisitForm";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
 import { siteConfig } from "@/lib/site-config";
@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 };
 
 const steps = [
-  { icon: MapPinIcon, title: "Arrive & Park", text: "Head to The Place, GCIC Tower, No. 16 Ebitu Ukiwe Street, Jabi, Abuja. Our welcome team will help you find your way in." },
-  { icon: BookOpenIcon, title: "Join the Service", text: "Services run roughly 90–120 minutes, with worship, the Word, and prayer. Come as you are — there's no dress code." },
-  { icon: UsersIcon, title: "Kids Are Welcome", text: "Our Children and Youth Club cares for your children in a loving, age-appropriate environment during the service." },
-  { icon: HeartIcon, title: "Connect Afterward", text: "Stick around after the service — our team would love to meet you and answer any questions." },
+  { icon: MapPin, title: "Arrive & Park", text: "Head to The Place, GCIC Tower, No. 16 Ebitu Ukiwe Street, Jabi, Abuja. Our welcome team will help you find your way in." },
+  { icon: BookOpen, title: "Join the Service", text: "Services run roughly 90-120 minutes, with worship, the Word, and prayer. Come as you are, there's no dress code." },
+  { icon: Users, title: "Kids Are Welcome", text: "Our Children and Youth Club cares for your children in a loving, age-appropriate environment during the service." },
+  { icon: Heart, title: "Connect Afterward", text: "Stick around after the service, our team would love to meet you and answer any questions." },
 ];
 
 const faqs = [
-  { question: "What should I wear?", answer: "Come as you are — there's no dress code at GCIC. Many members dress smart-casual, but you're welcome exactly as you are." },
-  { question: "Is there a place for my kids?", answer: "Yes — our Children and Youth Club welcomes children of all ages during every service." },
-  { question: "How long is the service?", answer: "Services typically run 90–120 minutes, including worship, the Word, and prayer." },
+  { question: "What should I wear?", answer: "Come as you are, there's no dress code at GCIC. Many members dress smart-casual, but you're welcome exactly as you are." },
+  { question: "Is there a place for my kids?", answer: "Yes, our Children and Youth Club welcomes children of all ages during every service." },
+  { question: "How long is the service?", answer: "Services typically run 90-120 minutes, including worship, the Word, and prayer." },
   { question: "Where do I park?", answer: "Parking is available at The Place, GCIC Tower on Ebitu Ukiwe Street, Jabi. Our welcome team can direct you on arrival." },
-  { question: "Can I watch online first?", answer: "Of course — visit our Watch Live page to experience a service from home before you visit in person." },
+  { question: "Can I watch online first?", answer: "Of course, visit our Watch Live page to experience a service from home before you visit in person." },
 ];
 
 export default function NewHerePage() {
@@ -48,12 +48,12 @@ export default function NewHerePage() {
             {steps.map((s, i) => (
               <div key={s.title} className="relative flex flex-col items-center text-center lg:items-center">
                 <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-crimson-600 text-ivory">
-                  <s.icon className="h-5 w-5" />
+                  <s.icon size={20} weight="regular" />
+                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-ivory bg-gold-500 font-sans text-[10px] font-bold text-ink-900">
+                    {i + 1}
+                  </span>
                 </span>
-                <span className="mt-3 font-sans text-xs font-semibold uppercase tracking-widest text-crimson-600">
-                  Step {i + 1}
-                </span>
-                <h3 className="mt-1 font-display text-base font-semibold text-ink-900">{s.title}</h3>
+                <h3 className="mt-4 font-display text-base font-semibold text-ink-900">{s.title}</h3>
                 <p className="mt-2 font-sans text-sm text-ink-600">{s.text}</p>
               </div>
             ))}

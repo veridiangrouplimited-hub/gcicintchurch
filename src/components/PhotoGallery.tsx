@@ -28,7 +28,7 @@ export function PhotoGallery({ images }: { images: GalleryImage[] }) {
             key={i}
             type="button"
             onClick={() => setLightboxIndex(i)}
-            className="mb-4 block w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200"
+            className="mb-4 block w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200 shadow-warm transition-shadow duration-200 hover:shadow-warm-lg"
           >
             <Image
               // eslint-disable-next-line @typescript-eslint/no-explicit-any

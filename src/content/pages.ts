@@ -22,14 +22,20 @@ export const nightVigil = {
 export const getInvolved = {
   heading: "Get Involved",
   subheading: "See What God Can Do Through You.",
-  body: [
-    "Tell your friends about church – watch someone's life change by inviting a friend to church during any of our programmes either by word of mouth or by using our social platform to spread the word.",
-    "Join our GCIC team – play a part. We are delighted you made it to our volunteer page. At GCIC, we are committed to changing lives for Christ in our community and the world at large. Volunteer and see the immediate difference you can make by serving on our team.",
+  ways: [
+    {
+      heading: "Tell Your Friends About Church",
+      body: "Watch someone's life change by inviting a friend to church during any of our programmes, either by word of mouth or by using our social platform to spread the word.",
+    },
+    {
+      heading: "Join Our GCIC Team",
+      body: "Play a part. We are delighted you made it to our volunteer page. At GCIC, we are committed to changing lives for Christ in our community and the world at large. Volunteer and see the immediate difference you can make by serving on our team.",
+    },
   ],
 };
 
 export const givingContent = {
-  scriptureRef: "2 Corinthians 9:7–8",
+  scriptureRef: "2 Corinthians 9:7-8",
   scriptureText:
     "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver. And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.",
   ngn: { bank: "Guaranty Trust Bank (GTB)", accountName: "GOD CITY INTERNATIONAL CHURCH", accountNumber: "0534561418" },
@@ -45,7 +51,7 @@ export const givingContent = {
 
 export const prayerRequests = {
   heading: "We'd Love to Pray for You",
-  body: "We believe God wants to meet you at the point of your needs and reveal His promises to you. Whatever you are concerned about and need prayers for — we want to be here for you! At GCIC, we have a team of prayer partners that pray for and email people within our community and around the world. The telephone Prayer Team also provides prayer and biblical encouragement support every day from 7am – 4:00pm GMT.",
+  body: "We believe God wants to meet you at the point of your needs and reveal His promises to you. Whatever you are concerned about and need prayers for, we want to be here for you! At GCIC, we have a team of prayer partners that pray for and email people within our community and around the world. The telephone Prayer Team also provides prayer and biblical encouragement support every day from 7am to 4:00pm GMT.",
   areas: ["General", "Deliverance", "Spiritual Growth", "Financial Growth", "Physical Growth", "Relationship"],
 };
 

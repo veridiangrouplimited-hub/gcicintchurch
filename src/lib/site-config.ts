@@ -7,7 +7,7 @@
 export const siteConfig = {
   churchName: "God's City International Church",
   shortName: "GCIC",
-  tagline: "Deliverance · Rescue · Restoration · Global Fire",
+  tagline: "Deliverance. Rescue. Restoration. Mobile Fire.",
   address: {
     line1: "The Place, God's City International Church Tower",
     line2: "No. 16 Ebitu Ukiwe Street, Jabi, Abuja, Nigeria",
@@ -26,7 +26,7 @@ export const siteConfig = {
 export const serviceTimes = [
   { label: "Sunday Service", time: "7:00am, 9:00am, 11:00am" },
   { label: "Prayer Machine", time: "Daily, 12 midnight" },
-  { label: "Morning Dew", time: "Mon–Sat, 6:00am" },
+  { label: "Morning Dew", time: "Mon-Sat, 6:00am" },
 ] as const;
 
 /** Small real facts used in the homepage hero's stat strip — see HeroFullBleed. */
@@ -88,6 +88,7 @@ export const primaryNav: NavItem[] = [
       { label: "Prayer Requests", href: "/prayer" },
       { label: "Share a Testimony", href: "/testimony" },
       { label: "Get Involved", href: "/get-involved" },
+      { label: "Privacy Policy", href: "/privacy" },
     ],
   },
 ];

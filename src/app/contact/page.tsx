@@ -1,38 +1,43 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/ContactForm";
 import {
-  FacebookIcon,
-  InstagramIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-  SpotifyIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "@/components/Icons";
-import { PageBanner } from "@/components/PageBanner";
+  EnvelopeSimple,
+  FacebookLogo,
+  InstagramLogo,
+  MapPin,
+  Phone,
+  SpotifyLogo,
+  XLogo,
+  YoutubeLogo,
+} from "@phosphor-icons/react/dist/ssr";
+import { ContactForm } from "@/components/ContactForm";
 import { PageHeader } from "@/components/PageHeader";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Get in touch with ${siteConfig.churchName} — ${siteConfig.address.line1}, ${siteConfig.address.line2}.`,
+  description: `Get in touch with ${siteConfig.churchName}, ${siteConfig.address.line1}, ${siteConfig.address.line2}.`,
 };
 
 const socials = [
-  { label: "Facebook", href: siteConfig.socials.facebook, icon: FacebookIcon },
-  { label: "Instagram", href: siteConfig.socials.instagram, icon: InstagramIcon },
-  { label: "Twitter", href: siteConfig.socials.twitter, icon: TwitterIcon },
-  { label: "YouTube", href: siteConfig.socials.youtube, icon: YoutubeIcon },
-  { label: "Spotify", href: siteConfig.socials.spotify, icon: SpotifyIcon },
+  { label: "Facebook", href: siteConfig.socials.facebook, icon: FacebookLogo },
+  { label: "Instagram", href: siteConfig.socials.instagram, icon: InstagramLogo },
+  { label: "Twitter", href: siteConfig.socials.twitter, icon: XLogo },
+  { label: "YouTube", href: siteConfig.socials.youtube, icon: YoutubeLogo },
+  { label: "Spotify", href: siteConfig.socials.spotify, icon: SpotifyLogo },
 ];
 
 export default function ContactPage() {
   return (
     <>
-      <PageHeader title="Contact" crumbLabel="Contact" crumbHref="/contact" />
-      <PageBanner image="/images/pastor-mary-preaching.jpg" alt="A GCIC pastor ministering to the congregation" />
+      <PageHeader
+        title="Contact"
+        crumbLabel="Contact"
+        crumbHref="/contact"
+        eyebrow="Connect"
+        image="/images/pastor-mary-preaching.jpg"
+        imageAlt="A GCIC pastor ministering to the congregation"
+      />
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2">
@@ -45,19 +50,26 @@ export default function ContactPage() {
             <h2 className="font-display text-xl font-semibold text-ink-900">Contact Info</h2>
             <div className="mt-6 space-y-4 font-sans text-ink-600">
               <p className="flex items-start gap-3">
-                <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-crimson-600" />
-                <span>
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-crimson-600" />
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `${siteConfig.address.line1}, ${siteConfig.address.line2}`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="font-semibold text-crimson-600 hover:text-crimson-700"
+                >
                   {siteConfig.address.line1}, {siteConfig.address.line2}
-                </span>
+                </a>
               </p>
               <p className="flex items-start gap-3">
-                <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-crimson-600" />
+                <EnvelopeSimple className="mt-0.5 h-5 w-5 shrink-0 text-crimson-600" />
                 <a href={`mailto:${siteConfig.email}`} className="font-semibold text-crimson-600 hover:text-crimson-700">
                   {siteConfig.email}
                 </a>
               </p>
               <p className="flex items-start gap-3">
-                <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-crimson-600" />
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-crimson-600" />
                 <span>{siteConfig.phone}</span>
               </p>
             </div>

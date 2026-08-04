@@ -50,7 +50,7 @@ export default async function DevotionalDetailPage({ params }: { params: Promise
           url: `${siteUrl}/devotionals/${devotional.slug}`,
         }}
       />
-      <PageHeader title={devotional.title} crumbLabel="Daily Devotional" crumbHref="/devotionals" />
+      <PageHeader title={devotional.title} crumbLabel="Daily Devotional" crumbHref="/devotionals" eyebrow="Media" />
 
       <article className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
@@ -63,7 +63,7 @@ export default async function DevotionalDetailPage({ params }: { params: Promise
               <h2 className="font-sans text-xs font-semibold uppercase tracking-widest text-crimson-600">Text</h2>
               <blockquote className="mt-2 border-l-2 border-gold-500 pl-4 font-display text-lg italic text-ink-900">
                 {devotional.scriptureText && <>&ldquo;{devotional.scriptureText}&rdquo;</>}
-                <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">— {devotional.scriptureRef}</cite>
+                <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">{devotional.scriptureRef}</cite>
               </blockquote>
             </section>
           )}

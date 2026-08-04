@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
 import { echurch } from "@/content/pages";
@@ -19,8 +18,14 @@ export default async function WatchPage() {
 
   return (
     <>
-      <PageHeader title={echurch.heading} crumbLabel="Watch Live" crumbHref="/watch" />
-      <PageBanner image="/images/stage-broadcast.jpg" alt="GCIC's stage set up for live broadcast" />
+      <PageHeader
+        title={echurch.heading}
+        crumbLabel="Watch Live"
+        crumbHref="/watch"
+        eyebrow="Media"
+        image="/images/stage-broadcast.jpg"
+        imageAlt="GCIC's stage set up for live broadcast"
+      />
 
       <section className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
@@ -40,7 +45,7 @@ export default async function WatchPage() {
           ) : (
             <div className="flex flex-col items-center justify-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-sand-100 px-6 py-16 text-center">
               <p className="font-display text-xl font-semibold text-ink-900">We&rsquo;re not live right now</p>
-              <p className="font-sans text-ink-600">Join us at our next service — see the times below.</p>
+              <p className="font-sans text-ink-600">Join us at our next service - see the times below.</p>
               <a
                 href={siteConfig.socials.youtube}
                 target="_blank"

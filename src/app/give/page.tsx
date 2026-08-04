@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 };
 
 const givingFaqs = [
-  { question: "Is my gift secure?", answer: "Yes — online gifts are processed securely by Paystack; we never see or store your card details." },
-  { question: "Can I give from outside Nigeria?", answer: "Yes — use the Forex account details under Bank Transfer for international gifts." },
-  { question: "Can I set up recurring giving?", answer: "Not yet through this site — please contact us and our team can help set up recurring giving." },
+  { question: "Is my gift secure?", answer: "Yes, online gifts are processed securely by Paystack; we never see or store your card details." },
+  { question: "Can I give from outside Nigeria?", answer: "Yes, use the Forex account details under Bank Transfer for international gifts." },
+  { question: "Can I set up recurring giving?", answer: "Not yet through this site. Please contact us and our team can help set up recurring giving." },
   { question: "How do I get a giving statement?", answer: "Email us at gcichq@gcicintchurch.org with your details and we'll be glad to issue one." },
 ];
 
@@ -26,7 +26,7 @@ export default function GivePage() {
         subtitle={
           <blockquote className="border-l-2 border-gold-500 pl-4 font-display text-lg italic text-ink-900">
             &ldquo;{givingContent.scriptureText}&rdquo;
-            <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">— {givingContent.scriptureRef}</cite>
+            <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">{givingContent.scriptureRef}</cite>
           </blockquote>
         }
         image="/images/pastors-seated.jpg"

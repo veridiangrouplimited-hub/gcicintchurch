@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageBanner } from "@/components/PageBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { PrayerForm } from "@/components/PrayerForm";
 import { prayerRequests } from "@/content/pages";
@@ -13,8 +12,14 @@ export const metadata: Metadata = {
 export default function PrayerPage() {
   return (
     <>
-      <PageHeader title={prayerRequests.heading} crumbLabel="Prayer Requests" crumbHref="/prayer" />
-      <PageBanner image="/images/pastor-praying-blue.jpg" alt="A GCIC pastor in prayer" />
+      <PageHeader
+        title={prayerRequests.heading}
+        crumbLabel="Prayer Requests"
+        crumbHref="/prayer"
+        eyebrow="Connect"
+        image="/images/pastor-praying-blue.jpg"
+        imageAlt="A GCIC pastor in prayer"
+      />
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <p className="font-sans text-ink-600">{prayerRequests.body}</p>
@@ -25,7 +30,7 @@ export default function PrayerPage() {
             <PrayerForm />
           </div>
           <p className="mt-8 text-center font-sans text-sm text-ink-600">
-            Telephone Prayer Team: daily, 7am–4pm GMT · {siteConfig.phone}
+            Telephone Prayer Team: daily, 7am-4pm GMT · {siteConfig.phone}
           </p>
         </div>
       </section>

@@ -11,7 +11,7 @@ export default function GivingThankYouPage() {
         <h1 className="font-display text-3xl font-semibold text-ink-900">Thank You for Your Gift</h1>
         <blockquote className="mt-6 border-l-2 border-gold-500 pl-4 text-left font-display text-lg italic text-ink-900">
           &ldquo;{givingContent.scriptureText}&rdquo;
-          <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">— {givingContent.scriptureRef}</cite>
+          <cite className="mt-2 block font-sans text-sm not-italic text-ink-600">{givingContent.scriptureRef}</cite>
         </blockquote>
         <p className="mt-8 font-sans text-ink-600">
           A receipt has been sent to your email. May God bless you abundantly for your generosity.

@@ -9,25 +9,27 @@ export function GivingTabs({ categories }: { categories: string[] }) {
 
   return (
     <div>
-      <div className="mb-8 flex justify-center gap-2">
-        <button
-          type="button"
-          onClick={() => setTab("online")}
-          className={`rounded-[var(--radius-control)] px-4 py-2 font-sans text-sm font-semibold ${
-            tab === "online" ? "bg-crimson-600 text-ivory" : "border border-sand-200 text-ink-900"
-          }`}
-        >
-          Give Online
-        </button>
-        <button
-          type="button"
-          onClick={() => setTab("bank")}
-          className={`rounded-[var(--radius-control)] px-4 py-2 font-sans text-sm font-semibold ${
-            tab === "bank" ? "bg-crimson-600 text-ivory" : "border border-sand-200 text-ink-900"
-          }`}
-        >
-          Bank Transfer
-        </button>
+      <div className="mb-8 flex justify-center">
+        <div className="inline-flex gap-1 rounded-full bg-sand-100 p-1">
+          <button
+            type="button"
+            onClick={() => setTab("online")}
+            className={`rounded-full px-4 py-2 font-sans text-sm font-semibold transition-colors duration-200 ${
+              tab === "online" ? "bg-crimson-600 text-ivory shadow-warm" : "text-ink-900 hover:text-crimson-600"
+            }`}
+          >
+            Give Online
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab("bank")}
+            className={`rounded-full px-4 py-2 font-sans text-sm font-semibold transition-colors duration-200 ${
+              tab === "bank" ? "bg-crimson-600 text-ivory shadow-warm" : "text-ink-900 hover:text-crimson-600"
+            }`}
+          >
+            Bank Transfer
+          </button>
+        </div>
       </div>
       {tab === "online" ? <GivingForm categories={categories} /> : <BankDetailsPanel />}
     </div>

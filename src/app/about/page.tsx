@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
+import { BookOpen, Flame, Globe, Heart, MapPin } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import { Accordion } from "@/components/Accordion";
 import { CTABand } from "@/components/CTABand";
-import { BookOpenIcon, FlameIcon, GlobeIcon, HeartIcon, MapPinIcon } from "@/components/Icons";
-import { MandateBanner } from "@/components/MandateBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { Tabs } from "@/components/Tabs";
-import { mandate, ourVision, whatWeBelieve, whoWeAre } from "@/content/about";
+import { ourVision, whatWeBelieve, whoWeAre } from "@/content/about";
 import { leadership } from "@/content/leadership";
 
 export const metadata: Metadata = {
@@ -16,13 +15,17 @@ export const metadata: Metadata = {
 };
 
 // Matches the fixed 5-item order of `ourVision` in src/content/about.ts.
-const visionIcons = [FlameIcon, MapPinIcon, BookOpenIcon, HeartIcon, GlobeIcon];
+const visionIcons = [Flame, MapPin, BookOpen, Heart, Globe];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHeader title="About Us" crumbLabel="About Us" />
-      <MandateBanner items={mandate} />
+      <PageHeader
+        title="About Us"
+        crumbLabel="About Us"
+        eyebrow="About"
+        subtitle="Deliverance. Rescue. Restoration. Mobile Fire."
+      />
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
@@ -58,10 +61,10 @@ export default function AboutPage() {
                         return (
                           <div
                             key={v.title}
-                            className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-lg"
+                            className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-warm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-warm-lg"
                           >
                             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
-                              <Icon className="h-6 w-6" />
+                              <Icon size={24} weight="regular" />
                             </span>
                             <h3 className="mt-5 font-display text-lg font-semibold text-ink-900">{v.title}</h3>
                             <p className="mt-2 font-sans text-sm text-ink-600">{v.text}</p>

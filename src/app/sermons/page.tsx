@@ -15,7 +15,7 @@ export default async function SermonsPage() {
 
   return (
     <>
-      <PageHeader title="Sermons" crumbLabel="Sermons" crumbHref="/sermons" />
+      <PageHeader title="Sermons" crumbLabel="Sermons" crumbHref="/sermons" eyebrow="Media" />
       <div className="py-16">
         <SermonsBrowser sermons={sermons} />
       </div>

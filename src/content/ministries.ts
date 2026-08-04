@@ -33,7 +33,7 @@ export const ministries: Ministry[] = [
       "All activities are voluntarily, bringing glory to the name of the Lord. The Teenagers Church presents a Play every month during the night vigil service, and it is always a blessing to the congregation.",
       "Proverbs 22:6 “Train up a child in the way he should go: and when he is old, he will not depart from it.”",
       "We understand that we are developing the next generation of leaders, hence we delight in providing our children with a true experience with God's teachings.",
-      "To receive more information about GCIC Children's Department, kindly contact us — we'd love to hear from you.",
+      "To receive more information about GCIC Children's Department, kindly contact us. We'd love to hear from you.",
     ],
     ctaLabel: "Contact Us",
     ctaHref: "/contact",
@@ -54,7 +54,7 @@ export const ministries: Ministry[] = [
     slug: "women-of-impact",
     name: "Women of Impact",
     summary: "Encouraging women to grow in faith, strengthen relationships, and serve church, community and world.",
-    meetingInfo: "Sister's Conference — bi-monthly · Hebrew Women — every Wednesday",
+    meetingInfo: "Sister's Conference: bi-monthly · Hebrew Women: every Wednesday",
     body: [
       "GCIC strongly believes in recognizing and supporting the contribution of women in the ministry of the church and the world at large.",
       "The Women of Impact is all about encouraging women to grow in their faith and walk with the Lord. The aim is to strengthen friendships and relationships with other women, and provide opportunities to serve and impact our church, our community and our world.",
@@ -69,11 +69,11 @@ export const ministries: Ministry[] = [
     name: "Marriage and Family",
     summary: "Helping couples flourish in marriage through counselling, prayer, and empowering educational tools.",
     anchorScripture: {
-      reference: "Genesis 2:22–24",
+      reference: "Genesis 2:22-24",
       text: "Then the LORD God made a woman from the rib he had taken out of the man, and he brought her to the man. The man said, “This is now bone of my bones and flesh of my flesh; she shall be called ‘woman,’ for she was taken out of man.” That is why a man leaves his father and mother and is united to his wife, and they become one flesh.",
     },
     body: [
-      "God is the author of marriage. From the beginning, God exhibits His value for marriage and family. We see a reflection of this in (Genesis 2:22-24) — one of the first miracles He performed on man was to give a suitable wife, a help mate. Also, Jesus started His miracle at a wedding ceremony in Cana in Galilee.",
+      "God is the author of marriage. From the beginning, God exhibits His value for marriage and family. We see a reflection of this in (Genesis 2:22-24): one of the first miracles He performed on man was to give a suitable wife, a help mate. Also, Jesus started His miracle at a wedding ceremony in Cana in Galilee.",
       "This ministry has been established to play a crucial role in building successful marriages, impact children and families. We aim to help couples flourish in their marriage, learn and develop marriage enhancement and communication skills, comprehend what the Bible says about marriage and family and understand the role of prayer in a marriage.",
       "Whether you are thinking about getting married, building your marriage and family, or walking through a challenging path, the GCIC Marriage Team is here to help you navigate your relationships, because these relationships are a part of God's design. We aim to do so by providing appropriate counselling, prayer and empowering educational tools to sustain and value each other in a healthy marriage and family relationship.",
       "We offer programs, workshops, coaching sessions and social events.",
@@ -100,7 +100,7 @@ export const ministries: Ministry[] = [
   {
     slug: "welfare",
     name: "Welfare",
-    summary: "Administering the general welfare of the church — foodstuff, clothing, and help for the needy and elderly.",
+    summary: "Administering the general welfare of the church: foodstuff, clothing, and help for the needy and elderly.",
     body: [
       "One of our visions is to have a body of Christ that is united in love and cares for one another at all times. This is the basis for the formation of the Welfare Department; to serve as a medium for the achievement of this aspiration. The Welfare Department is in charge of the general welfare administration of the Church as it relates to every member.",
       "From time to time, the welfare department of the church provides foodstuff, clothing and renders any other help within their capacity to the needy, the elderly people and the less privileged in the church.",
@@ -113,9 +113,9 @@ export const ministries: Ministry[] = [
     slug: "heavenly-jerusalem-altar",
     name: "Heavenly Jerusalem Altar",
     summary: "Home cells across the FCT that teach the Bible, fellowship, and evangelise their neighbourhoods.",
-    meetingInfo: "Every Saturday, 5:00pm–6:00pm",
+    meetingInfo: "Every Saturday, 5:00pm-6:00pm",
     body: [
-      "It is made up of a small sized group of people who gather together every Saturday from 5pm – 6pm, to teach the Bible and the word of God.",
+      "It is made up of a small sized group of people who gather together every Saturday from 5pm to 6pm, to teach the Bible and the word of God.",
       "The purpose is to edify the name of the Lord, build up, equip one another, fellowship together and to evangelise in their specific neighbourhoods the Good News of Jesus Christ.",
       "GCIC has a number of home cells across the FCT; it is an integral part of our ministry and also forms part of the blueprint of our Church.",
       "If you are not connected to any of the Altars, please contact us via email or speak to any of our Pastors, Ministers after any of our Services.",

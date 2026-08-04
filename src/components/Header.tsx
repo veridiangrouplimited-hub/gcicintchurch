@@ -1,21 +1,78 @@
 "use client";
 
+import {
+  ArrowRight,
+  Baby,
+  BookOpen,
+  Broadcast,
+  Camera,
+  CaretDown,
+  ChatCircleText,
+  Crown,
+  EnvelopeSimple,
+  Flame,
+  Globe,
+  GraduationCap,
+  HandHeart,
+  HandsPraying,
+  Heart,
+  List,
+  MapPin,
+  MicrophoneStage,
+  Newspaper,
+  ShieldCheck,
+  Users,
+  UsersThree,
+  VideoCamera,
+  X,
+} from "@phosphor-icons/react";
+import type { Icon } from "@phosphor-icons/react/lib";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { primaryNav, siteConfig } from "@/lib/site-config";
+
+const navIcons: Record<string, Icon> = {
+  "/about": Users,
+  "/about/leadership": Crown,
+  "/about#what-we-believe": BookOpen,
+  "/about/membership-class": GraduationCap,
+  "/ministries/children-and-youth": Baby,
+  "/ministries/mens-group": UsersThree,
+  "/ministries/women-of-impact": Flame,
+  "/ministries/marriage-and-family": Heart,
+  "/ministries/outreach": Globe,
+  "/ministries/welfare": HandHeart,
+  "/ministries/heavenly-jerusalem-altar": MapPin,
+  "/ministries/training-department": GraduationCap,
+  "/watch": VideoCamera,
+  "/sermons": MicrophoneStage,
+  "/devotionals": BookOpen,
+  "/radio": Broadcast,
+  "/blog": Newspaper,
+  "/gallery": Camera,
+  "/contact": EnvelopeSimple,
+  "/prayer": HandsPraying,
+  "/testimony": ChatCircleText,
+  "/get-involved": HandHeart,
+  "/privacy": ShieldCheck,
+};
 
 export function Header() {
   const [condensed, setCondensed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setCondensed(window.scrollY > 80);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const el = sentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setCondensed(!entry.isIntersecting), {
+      rootMargin: "-80px 0px 0px 0px",
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -40,11 +97,13 @@ export function Header() {
   }, []);
 
   return (
-    <header
+    <>
+      <div ref={sentinelRef} aria-hidden="true" />
+      <header
       ref={headerRef}
       className={`sticky top-0 z-50 w-full border-b transition-all duration-200 ${
         condensed
-          ? "bg-ivory/95 backdrop-blur border-sand-200 shadow-sm"
+          ? "bg-ivory/95 backdrop-blur border-sand-200 shadow-warm"
           : "bg-ivory border-transparent"
       }`}
     >
@@ -83,20 +142,38 @@ export function Header() {
                     }}
                   >
                     {item.label}
-                    <ChevronDown />
+                    <CaretDown size={12} weight="bold" />
                   </button>
                   {openMenu === item.label && (
-                    <div className="absolute left-0 top-full z-10 mt-1 min-w-56 rounded-md border border-sand-200 bg-ivory py-2 shadow-lg">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-4 py-2 font-sans text-sm text-ink-900 hover:bg-sand-100 hover:text-crimson-600"
-                          onClick={() => setOpenMenu(null)}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div
+                      className={`dropdown-in absolute left-0 top-full z-10 mt-2 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-2 shadow-warm-lg ${
+                        item.children.length > 5 ? "grid w-[26rem] grid-cols-2 gap-0.5" : "min-w-60"
+                      }`}
+                    >
+                      {item.children.map((child) => {
+                        const Icon = navIcons[child.href];
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="flex items-center gap-2.5 rounded-[var(--radius-control)] px-3 py-2.5 font-sans text-sm text-ink-900 transition-colors hover:bg-sand-100 hover:text-crimson-600"
+                            onClick={() => setOpenMenu(null)}
+                          >
+                            {Icon && <Icon size={16} weight="regular" className="shrink-0 text-crimson-600" />}
+                            {child.label}
+                          </Link>
+                        );
+                      })}
+                      <Link
+                        href={item.href}
+                        className={`col-span-2 mt-1 flex items-center gap-1.5 rounded-[var(--radius-control)] border-t border-sand-200 px-3 pt-3 pb-1 font-sans text-sm font-semibold text-crimson-600 transition-colors hover:text-crimson-700 ${
+                          item.children.length > 5 ? "" : "col-span-1"
+                        }`}
+                        onClick={() => setOpenMenu(null)}
+                      >
+                        View all {item.label}
+                        <ArrowRight size={13} weight="bold" />
+                      </Link>
                     </div>
                   )}
                 </>
@@ -127,7 +204,7 @@ export function Header() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((v) => !v)}
           >
-            <MenuIcon open={mobileOpen} />
+            {mobileOpen ? <X size={22} weight="regular" /> : <List size={22} weight="regular" />}
           </button>
         </div>
       </div>
@@ -156,22 +233,30 @@ export function Header() {
                     className="p-3 text-ink-900"
                     onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
                   >
-                    <ChevronDown rotated={openMenu === item.label} />
+                    <CaretDown
+                      size={12}
+                      weight="bold"
+                      className={`transition-transform duration-150 ${openMenu === item.label ? "rotate-180" : ""}`}
+                    />
                   </button>
                 )}
               </div>
               {item.children && openMenu === item.label && (
                 <div className="pb-3 pl-4">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block py-2 font-sans text-sm text-ink-600 hover:text-crimson-600"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+                  {item.children.map((child) => {
+                    const Icon = navIcons[child.href];
+                    return (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="flex items-center gap-2.5 py-2 font-sans text-sm text-ink-600 hover:text-crimson-600"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {Icon && <Icon size={15} weight="regular" className="shrink-0 text-crimson-600" />}
+                        {child.label}
+                      </Link>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -185,36 +270,7 @@ export function Header() {
           </Link>
         </nav>
       )}
-    </header>
-  );
-}
-
-function ChevronDown({ rotated = false }: { rotated?: boolean }) {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      aria-hidden="true"
-      className={`transition-transform duration-150 ${rotated ? "rotate-180" : ""}`}
-    >
-      <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function MenuIcon({ open }: { open: boolean }) {
-  if (open) {
-    return (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-      <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-    </svg>
+      </header>
+    </>
   );
 }
