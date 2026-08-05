@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { RevealItem } from "@/components/motion/RevealItem";
 import { SermonCard } from "@/components/SermonCard";
 import type { Sermon } from "@/sanity/queries";
 
@@ -68,8 +69,10 @@ export function SermonsBrowser({ sermons }: { sermons: Sermon[] }) {
         </div>
       ) : (
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 pb-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-8">
-          {filtered.map((s) => (
-            <SermonCard key={s._id} sermon={s} />
+          {filtered.map((s, i) => (
+            <RevealItem key={s._id} index={i % 9}>
+              <SermonCard sermon={s} />
+            </RevealItem>
           ))}
         </div>
       )}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DevotionalCard } from "@/components/DevotionalCard";
+import { RevealItem } from "@/components/motion/RevealItem";
 import { PageHeader } from "@/components/PageHeader";
-import { Reveal } from "@/components/Reveal";
 import { getDevotionals } from "@/sanity/queries";
 
 export const metadata: Metadata = {
@@ -25,9 +25,9 @@ export default async function DevotionalsPage() {
         ) : (
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {devotionals.map((d, i) => (
-              <Reveal key={d._id} delay={(i % 3) * 80}>
+              <RevealItem key={d._id} index={i % 9}>
                 <DevotionalCard devotional={d} />
-              </Reveal>
+              </RevealItem>
             ))}
           </div>
         )}

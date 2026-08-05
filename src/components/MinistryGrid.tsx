@@ -2,6 +2,7 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import type { Ministry } from "@/content/ministries";
+import { RevealItem } from "@/components/motion/RevealItem";
 
 export const ministryImages: Record<string, string> = {
   "children-and-youth": "/images/children-ministry.png",
@@ -64,7 +65,9 @@ export function MinistryGrid({ ministries }: { ministries: Ministry[] }) {
   return (
     <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
       {ministries.map((m, i) => (
-        <MinistryCard key={m.slug} ministry={m} index={i} />
+        <RevealItem key={m.slug} index={i}>
+          <MinistryCard ministry={m} index={i} />
+        </RevealItem>
       ))}
     </div>
   );

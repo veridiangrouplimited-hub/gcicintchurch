@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { RevealItem } from "@/components/motion/RevealItem";
 import { urlFor } from "@/sanity/image";
 
 type GalleryImage = { image: unknown; alt: string; albumTitle: string };
@@ -24,21 +25,22 @@ export function PhotoGallery({ images }: { images: GalleryImage[] }) {
     <>
       <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
         {images.map((img, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setLightboxIndex(i)}
-            className="mb-4 block w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200 shadow-warm transition-shadow duration-200 hover:shadow-warm-lg"
-          >
-            <Image
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              src={urlFor(img.image as any).width(600).url()}
-              alt={img.alt}
-              width={600}
-              height={450}
-              className="h-auto w-full object-cover transition-transform hover:scale-105"
-            />
-          </button>
+          <RevealItem key={i} index={i % 9} className="mb-4">
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(i)}
+              className="block w-full overflow-hidden rounded-[var(--radius-media)] border border-sand-200 shadow-warm transition-shadow duration-200 hover:shadow-warm-lg"
+            >
+              <Image
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                src={urlFor(img.image as any).width(600).url()}
+                alt={img.alt}
+                width={600}
+                height={450}
+                className="h-auto w-full object-cover transition-transform hover:scale-105"
+              />
+            </button>
+          </RevealItem>
         ))}
       </div>
 
