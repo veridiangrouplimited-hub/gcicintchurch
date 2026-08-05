@@ -32,7 +32,7 @@ export function HeroFullBleed({
         <div className="max-w-2xl">
           {eyebrow && (
             <HeroReveal index={0}>
-              <p className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-gold-500">
+              <p className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-gold-500 drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]">
                 {eyebrow}
               </p>
             </HeroReveal>

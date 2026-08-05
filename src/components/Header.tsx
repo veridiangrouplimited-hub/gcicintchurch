@@ -123,7 +123,7 @@ export function Header() {
             className="h-10 w-10 sm:h-11 sm:w-11"
             priority
           />
-          <span className="hidden font-sans text-xs uppercase tracking-[0.2em] text-ink-600 md:inline">
+          <span className="hidden font-sans text-xs font-medium uppercase tracking-[0.06em] text-ink-900 md:inline">
             {siteConfig.churchName}
           </span>
         </Link>
