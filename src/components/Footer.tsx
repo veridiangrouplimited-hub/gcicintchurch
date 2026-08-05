@@ -111,6 +111,17 @@ export function Footer() {
             Privacy Policy
           </Link>
         </div>
+        <p className="mt-4 text-center font-sans text-xs text-ink-600">
+          Powered by{" "}
+          <a
+            href="https://veridian.ng"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-medium hover:text-crimson-600"
+          >
+            Veridian Limited
+          </a>
+        </p>
       </div>
     </footer>
   );
