@@ -17,8 +17,8 @@ export default function PrivacyPage() {
           <div className="rounded-[var(--radius-media)] border border-gold-500/40 bg-crimson-50 p-4 text-sm text-ink-900 shadow-warm">
             <strong>Draft for review.</strong> This page was drafted as a standard-practice starting
             point and has not been reviewed by a lawyer or church leadership. Please review and
-            confirm accuracy, especially the data retention and third-party sections, before this
-            page is treated as the church&rsquo;s official policy.
+            confirm accuracy, especially the data retention section, before this page is treated as
+            the church&rsquo;s official policy.
           </div>
 
           <p className="text-sm text-ink-600">Last updated: [date to be set on publish]</p>
@@ -60,18 +60,6 @@ export default function PrivacyPage() {
               a testimony, to share what God has done. We do not sell or rent your information to
               anyone.
             </p>
-          </div>
-
-          <div>
-            <h2 className="font-display text-xl font-semibold text-ink-900">Third Parties</h2>
-            <p className="mt-3">This site uses the following third-party services, each of which has its own privacy policy:</p>
-            <ul className="mt-3 list-disc space-y-1 pl-5">
-              <li><strong>Paystack:</strong> processes online gifts and card payments.</li>
-              <li><strong>Sanity:</strong> our content management system, hosting sermons, devotionals, and other published content.</li>
-              <li><strong>YouTube / YouTube (no-cookie):</strong> embeds our live stream and sermon videos.</li>
-              <li><strong>Spotify:</strong> embeds our Power Touch Radio podcast player.</li>
-              <li><strong>Resend:</strong> delivers form-submission emails to our team.</li>
-            </ul>
           </div>
 
           <div>
