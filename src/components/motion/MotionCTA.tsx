@@ -12,10 +12,13 @@ export function MotionCTA({
   href,
   className,
   children,
+  external = false,
 }: {
   href: string;
   className?: string;
   children: ReactNode;
+  /** Renders a plain <a target="_blank"> instead of next/link, for off-site links. */
+  external?: boolean;
 }) {
   return (
     <motion.div
@@ -24,9 +27,15 @@ export function MotionCTA({
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 420, damping: 28 }}
     >
-      <Link href={href} className={className}>
-        {children}
-      </Link>
+      {external ? (
+        <a href={href} target="_blank" rel="noreferrer noopener" className={className}>
+          {children}
+        </a>
+      ) : (
+        <Link href={href} className={className}>
+          {children}
+        </Link>
+      )}
     </motion.div>
   );
 }

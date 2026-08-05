@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RevealItem } from "@/components/motion/RevealItem";
 
 export function LeaderProfile({
   name,
@@ -41,11 +42,11 @@ export function LeaderProfile({
 
           {factStrip && factStrip.length > 0 && (
             <div className="mt-6 flex gap-6 border-t border-sand-200 pt-6">
-              {factStrip.map((f) => (
-                <div key={f.label}>
+              {factStrip.map((f, i) => (
+                <RevealItem key={f.label} index={i}>
                   <p className="font-display text-xl font-semibold text-crimson-600">{f.value}</p>
                   <p className="mt-1 font-sans text-xs uppercase tracking-wide text-ink-600">{f.label}</p>
-                </div>
+                </RevealItem>
               ))}
             </div>
           )}

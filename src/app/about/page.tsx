@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Accordion } from "@/components/Accordion";
 import { CTABand } from "@/components/CTABand";
+import { RevealItem } from "@/components/motion/RevealItem";
 import { PageHeader } from "@/components/PageHeader";
 import { Tabs } from "@/components/Tabs";
 import { ourVision, whatWeBelieve, whoWeAre } from "@/content/about";
@@ -59,16 +60,15 @@ export default function AboutPage() {
                       {ourVision.map((v, i) => {
                         const Icon = visionIcons[i];
                         return (
-                          <div
-                            key={v.title}
-                            className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-warm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-warm-lg"
-                          >
-                            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
-                              <Icon size={24} weight="regular" />
-                            </span>
-                            <h3 className="mt-5 font-display text-lg font-semibold text-ink-900">{v.title}</h3>
-                            <p className="mt-2 font-sans text-sm text-ink-600">{v.text}</p>
-                          </div>
+                          <RevealItem key={v.title} index={i}>
+                            <div className="group rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-7 shadow-warm transition-all duration-200 hover:-translate-y-1 hover:border-crimson-600/40 hover:shadow-warm-lg">
+                              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 ring-1 ring-crimson-600/15 transition-colors group-hover:bg-crimson-600 group-hover:text-ivory">
+                                <Icon size={24} weight="regular" />
+                              </span>
+                              <h3 className="mt-5 font-display text-lg font-semibold text-ink-900">{v.title}</h3>
+                              <p className="mt-2 font-sans text-sm text-ink-600">{v.text}</p>
+                            </div>
+                          </RevealItem>
                         );
                       })}
                     </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BlogCard } from "@/components/BlogCard";
+import { RevealItem } from "@/components/motion/RevealItem";
 import { PageHeader } from "@/components/PageHeader";
-import { Reveal } from "@/components/Reveal";
 import { getBlogPosts } from "@/sanity/queries";
 
 export const metadata: Metadata = {
@@ -25,9 +25,9 @@ export default async function BlogPage() {
         ) : (
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((p, i) => (
-              <Reveal key={p._id} delay={(i % 3) * 80}>
+              <RevealItem key={p._id} index={i % 9}>
                 <BlogCard post={p} />
-              </Reveal>
+              </RevealItem>
             ))}
           </div>
         )}

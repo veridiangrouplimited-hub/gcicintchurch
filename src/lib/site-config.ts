@@ -76,10 +76,9 @@ export const primaryNav: NavItem[] = [
       { label: "Power Touch Radio", href: "/radio" },
       { label: "Blog", href: "/blog" },
       { label: "Photo Gallery", href: "/gallery" },
+      { label: "Events", href: "/events" },
     ],
   },
-  { label: "Events", href: "/events" },
-  { label: "Give", href: "/give" },
   {
     label: "Connect",
     href: "/contact",

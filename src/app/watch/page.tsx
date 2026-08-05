@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MotionCTA } from "@/components/motion/MotionCTA";
 import { PageHeader } from "@/components/PageHeader";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
 import { echurch } from "@/content/pages";
@@ -46,14 +47,13 @@ export default async function WatchPage() {
             <div className="flex flex-col items-center justify-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-sand-100 px-6 py-16 text-center">
               <p className="font-display text-xl font-semibold text-ink-900">We&rsquo;re not live right now</p>
               <p className="font-sans text-ink-600">Join us at our next service - see the times below.</p>
-              <a
+              <MotionCTA
                 href={siteConfig.socials.youtube}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-2 rounded-[var(--radius-control)] bg-crimson-600 px-6 py-3 font-sans text-sm font-semibold text-ivory hover:bg-crimson-700"
+                external
+                className="mt-2 block rounded-[var(--radius-control)] bg-crimson-600 px-6 py-3 font-sans text-sm font-semibold text-ivory hover:bg-crimson-700"
               >
                 Visit Our YouTube Channel
-              </a>
+              </MotionCTA>
             </div>
           )}
 
