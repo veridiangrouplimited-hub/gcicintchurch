@@ -6,6 +6,7 @@ import { CTABand } from "@/components/CTABand";
 import { HeroFullBleed } from "@/components/HeroFullBleed";
 import { JsonLd } from "@/components/JsonLd";
 import { MinistryCard } from "@/components/MinistryGrid";
+import { RevealItem } from "@/components/motion/RevealItem";
 import { Reveal } from "@/components/Reveal";
 import { SermonCard } from "@/components/SermonCard";
 import { ServiceTimesStrip } from "@/components/ServiceTimesStrip";
@@ -93,7 +94,9 @@ export default async function Home() {
         </Reveal>
         <Carousel>
           {ministries.map((m, i) => (
-            <MinistryCard key={m.slug} ministry={m} index={i} className="w-72 shrink-0 sm:w-80" />
+            <RevealItem key={m.slug} index={i}>
+              <MinistryCard ministry={m} index={i} className="w-72 shrink-0 sm:w-80" />
+            </RevealItem>
           ))}
         </Carousel>
         <div className="mt-8 text-center">
@@ -110,13 +113,15 @@ export default async function Home() {
               <h2 className="font-display text-3xl font-semibold text-ink-900">Latest Sermons</h2>
             </div>
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-5">
-              <div className="lg:col-span-3">
+              <RevealItem index={0} className="lg:col-span-3">
                 <SermonCard sermon={sermons[0]} />
-              </div>
+              </RevealItem>
               {sermons.length > 1 && (
                 <div className="flex flex-col justify-center gap-1 lg:col-span-2">
-                  {sermons.slice(1, 3).map((s) => (
-                    <SermonCard key={s._id} sermon={s} variant="compact" />
+                  {sermons.slice(1, 3).map((s, i) => (
+                    <RevealItem key={s._id} index={i + 1}>
+                      <SermonCard sermon={s} variant="compact" />
+                    </RevealItem>
                   ))}
                 </div>
               )}
@@ -136,21 +141,22 @@ export default async function Home() {
             <h2 className="text-center font-display text-3xl font-semibold text-ink-900">Upcoming Events</h2>
             <div className="mt-8 space-y-3">
               {upcoming.map((o, i) => (
-                <Link
-                  key={`${o.event._id}-${i}`}
-                  href={`/events/${o.event.slug}`}
-                  className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-warm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-warm-lg"
-                >
-                  <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center ring-1 ring-crimson-600/10 transition-colors group-hover:bg-crimson-600 group-hover:ring-crimson-600">
-                    <span className="font-sans text-xs font-semibold uppercase text-crimson-600 group-hover:text-ivory">
-                      {o.start.toLocaleDateString("en-US", { month: "short" })}
-                    </span>
-                    <span className="font-display text-2xl font-semibold text-ink-900 group-hover:text-ivory">{o.start.getDate()}</span>
-                  </div>
-                  <h3 className="font-display text-base font-semibold text-ink-900 group-hover:text-crimson-600">
-                    {o.event.title}
-                  </h3>
-                </Link>
+                <RevealItem key={`${o.event._id}-${i}`} index={i}>
+                  <Link
+                    href={`/events/${o.event.slug}`}
+                    className="group flex items-center gap-4 rounded-[var(--radius-media)] border border-sand-200 bg-ivory p-5 shadow-warm transition-all duration-200 hover:-translate-y-0.5 hover:border-crimson-600/40 hover:shadow-warm-lg"
+                  >
+                    <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] bg-sand-100 py-2 text-center ring-1 ring-crimson-600/10 transition-colors group-hover:bg-crimson-600 group-hover:ring-crimson-600">
+                      <span className="font-sans text-xs font-semibold uppercase text-crimson-600 group-hover:text-ivory">
+                        {o.start.toLocaleDateString("en-US", { month: "short" })}
+                      </span>
+                      <span className="font-display text-2xl font-semibold text-ink-900 group-hover:text-ivory">{o.start.getDate()}</span>
+                    </div>
+                    <h3 className="font-display text-base font-semibold text-ink-900 group-hover:text-crimson-600">
+                      {o.event.title}
+                    </h3>
+                  </Link>
+                </RevealItem>
               ))}
             </div>
             <div className="mt-8 text-center">
@@ -177,8 +183,10 @@ export default async function Home() {
               <h2 className="font-display text-3xl font-semibold text-ink-900">From the Blog</h2>
             </div>
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-3">
-              {blogPosts.slice(0, 3).map((p) => (
-                <BlogCard key={p._id} post={p} />
+              {blogPosts.slice(0, 3).map((p, i) => (
+                <RevealItem key={p._id} index={i}>
+                  <BlogCard post={p} />
+                </RevealItem>
               ))}
             </div>
             <div className="mt-8 text-center">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MotionCTA } from "@/components/motion/MotionCTA";
 
 export function CTABand({
   heading,
@@ -23,13 +24,13 @@ export function CTABand({
           </h2>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {cta.map((c) => (
-              <Link
+              <MotionCTA
                 key={c.href}
                 href={c.href}
-                className="rounded-[var(--radius-control)] bg-ivory px-8 py-3.5 font-sans text-sm font-semibold text-crimson-700 transition-colors hover:bg-sand-100"
+                className="block rounded-[var(--radius-control)] bg-ivory px-8 py-3.5 font-sans text-sm font-semibold text-crimson-700 transition-colors hover:bg-sand-100"
               >
                 {c.label}
-              </Link>
+              </MotionCTA>
             ))}
           </div>
         </div>
