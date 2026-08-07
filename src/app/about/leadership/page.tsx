@@ -23,7 +23,6 @@ export default function LeadershipPage() {
         <LeaderProfile
           name={leadership.name}
           photo="/images/leadership-hero.jpg"
-          secondaryPhoto="/images/leadership-secondary.jpg"
           scriptureRef={leadership.scriptureRef}
           scriptureText={leadership.scriptureText}
           heading={leadership.callingHeading}
