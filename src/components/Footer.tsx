@@ -1,5 +1,6 @@
 import {
   BookOpen,
+  Broadcast,
   Calendar,
   Camera,
   EnvelopeSimple,
@@ -23,6 +24,7 @@ const exploreIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "/devotionals": Fire,
   "/events": Calendar,
   "/gallery": Camera,
+  "/watch": Broadcast,
 };
 
 export function Footer() {

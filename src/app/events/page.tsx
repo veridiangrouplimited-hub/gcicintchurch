@@ -32,7 +32,7 @@ export default async function EventsPage() {
 
   return (
     <>
-      <PageHeader title="Events" crumbLabel="Events" crumbHref="/events" />
+      <PageHeader title="Events" crumbLabel="Events" crumbHref="/events" eyebrow="Media" />
       <div className="py-16">
         <EventsBrowser occurrences={occurrences} />
       </div>

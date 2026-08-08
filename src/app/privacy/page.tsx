@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <PageHeader title="Privacy Policy" crumbLabel="Privacy Policy" crumbHref="/privacy" />
+      <PageHeader title="Privacy Policy" crumbLabel="Privacy Policy" crumbHref="/privacy" eyebrow="Connect" />
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl space-y-10 font-sans text-ink-600">
           <div className="rounded-[var(--radius-media)] border border-gold-500/40 bg-crimson-50 p-4 text-sm text-ink-900 shadow-warm">

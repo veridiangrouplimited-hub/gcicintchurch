@@ -15,8 +15,8 @@ export default function LeadershipPage() {
     <>
       <PageHeader
         title="Pastor Matthew and Pastor (Mrs.) Mary Morakinyo"
-        crumbLabel="Our Leadership"
-        crumbHref="/about/leadership"
+        crumbLabel="About"
+        crumbHref="/about"
         eyebrow="About"
       />
       <Reveal>

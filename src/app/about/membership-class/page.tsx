@@ -12,8 +12,8 @@ export default function MembershipClassPage() {
     <>
       <PageHeader
         title={membershipClass.heading}
-        crumbLabel="Membership Class"
-        crumbHref="/about/membership-class"
+        crumbLabel="About"
+        crumbHref="/about"
         eyebrow="About"
         image="/images/pastor-teaching.jpg"
         imageAlt="A GCIC pastor teaching the membership class"

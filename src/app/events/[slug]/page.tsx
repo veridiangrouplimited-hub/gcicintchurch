@@ -64,7 +64,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
           }}
         />
       )}
-      <PageHeader title={event.title} crumbLabel="Events" crumbHref="/events" eyebrow="Event" />
+      <PageHeader title={event.title} crumbLabel="Events" crumbHref="/events" eyebrow="Media" />
 
       <section className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">

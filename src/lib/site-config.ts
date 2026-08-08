@@ -112,5 +112,6 @@ export const footerNav = {
     { label: "Daily Devotional", href: "/devotionals" },
     { label: "Events", href: "/events" },
     { label: "Photo Gallery", href: "/gallery" },
+    { label: "Watch Live / eChurch", href: "/watch" },
   ] satisfies NavLink[],
 };
